@@ -1,0 +1,12 @@
+{
+  "description": "Frozen no-title output produced by the unmodified pre-title exporter; tests do not need that external project.",
+  "source_exporter": "D:\\BaiduNetdiskDownload\\HX4S20_Contest_202606\\newp\\lab_image_nav_timing_20261008\\scripts\\export_site_cfg.py",
+  "source_exporter_sha256": "b5da94765c58d4637bd5f88afab27637d6945c61515b3b7f17905c35130dbd16",
+  "source_config": "config/runtime_site.json with the title field removed",
+  "source_config_without_title_canonical_sha256": "3dc9a48973037349ba3ccc700cce422911361bd87555bed7c3e43a2b910e095e",
+  "glyph_catalog_sha256": "c8df986373c417bb513e781a752662171ae45b43400964f0e69d3200a634dd5e",
+  "notes_glyph_catalog_sha256": "f9828fedd9c34ffb38aebae45f882cc034b82fb6a8a389273a95770f184b24ea",
+  "fixture": "SITE_legacy_without_title.CFG",
+  "fixture_bytes": 8192,
+  "fixture_sha256": "99a306d56724f48424121a21590a497121d6ab0654ae96daf9f586e09ab672d1"
+}

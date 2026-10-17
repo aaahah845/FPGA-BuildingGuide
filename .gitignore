@@ -1,0 +1,17 @@
+# Build and verification output; delivered assets in release/ and TF_CARD/ are tracked.
+/.repro_work/
+/reports/
+/build/
+/dist/
+**/__pycache__/
+*.pyc
+/.venv/
+/src/td_project/*_Runs/
+/src/td_project/*.log
+/src/td_project/*.jou
+/src/td_project/*.lock
+/transcript
+/vsim.wlf
+**/work/_info
+/.DS_Store
+/Thumbs.db

@@ -1,0 +1,479 @@
+{
+  "title": "校园导览终端",
+  "images": [
+    "BACK.BMP",
+    "MAP1.BMP",
+    "MAP2.BMP",
+    "MAP3.BMP",
+    "ROOM101.BMP",
+    "ROOM102.BMP",
+    "ROOM103.BMP",
+    "ROOM104.BMP",
+    "ROOM105.BMP",
+    "ROOM106.BMP",
+    "ROOM201.BMP",
+    "ROOM202.BMP",
+    "ROOM203.BMP",
+    "ROOM204.BMP",
+    "ROOM205.BMP",
+    "ROOM206.BMP",
+    "ROOM301.BMP",
+    "ROOM302.BMP",
+    "ROOM303.BMP",
+    "ROOM304.BMP",
+    "ROOM305.BMP",
+    "ROOM306.BMP",
+    "POINT101.BMP",
+    "POINT102.BMP",
+    "POINT103.BMP",
+    "POINT104.BMP",
+    "POINT105.BMP",
+    "POINT106.BMP",
+    "POINT201.BMP",
+    "POINT202.BMP",
+    "POINT203.BMP",
+    "POINT204.BMP",
+    "POINT205.BMP",
+    "POINT206.BMP",
+    "POINT301.BMP",
+    "POINT302.BMP",
+    "POINT303.BMP",
+    "POINT304.BMP",
+    "POINT305.BMP",
+    "POINT306.BMP",
+    "SLIDE01.BMP",
+    "SLIDE02.BMP",
+    "SLIDE03.BMP",
+    "SPARE01.BMP",
+    "SPARE02.BMP",
+    "ROOM107.BMP",
+    "POINT107.BMP",
+    "ROOM108.BMP",
+    "POINT108.BMP",
+    "ROOM109.BMP",
+    "POINT109.BMP",
+    "ROOM110.BMP",
+    "POINT110.BMP",
+    "ROOM207.BMP",
+    "POINT207.BMP",
+    "ROOM208.BMP",
+    "POINT208.BMP",
+    "ROOM209.BMP",
+    "POINT209.BMP",
+    "ROOM210.BMP",
+    "POINT210.BMP",
+    "ROOM307.BMP",
+    "POINT307.BMP",
+    "ROOM308.BMP",
+    "POINT308.BMP",
+    "ROOM309.BMP",
+    "POINT309.BMP",
+    "ROOM310.BMP",
+    "POINT310.BMP"
+  ],
+  "slideshow": [
+    40,
+    41,
+    42
+  ],
+  "period_select": 0,
+  "show_points": true,
+  "selected_only": false,
+  "default_zoom": false,
+  "floors": [
+    {
+      "name": "1层教学楼",
+      "map_image": 1,
+      "rooms": [
+        {
+          "name": "物理实验室",
+          "photo_image": 4,
+          "point": [
+            96,
+            96
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": true,
+          "activity": "实验课程，请按时到场。",
+          "point_photo_image": 22
+        },
+        {
+          "name": "化学实验室",
+          "photo_image": 5,
+          "point": [
+            320,
+            112
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 23
+        },
+        {
+          "name": "数学教研室",
+          "photo_image": 6,
+          "point": [
+            544,
+            96
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 24
+        },
+        {
+          "name": "计算机教室",
+          "photo_image": 7,
+          "point": [
+            128,
+            352
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 25
+        },
+        {
+          "name": "图书阅览室",
+          "photo_image": 8,
+          "point": [
+            336,
+            360
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 26
+        },
+        {
+          "name": "生物实验室",
+          "photo_image": 9,
+          "point": [
+            552,
+            368
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 27
+        },
+        {
+          "name": "音乐教室",
+          "photo_image": 45,
+          "point_photo_image": 46,
+          "point": [
+            224,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "美术教室",
+          "photo_image": 47,
+          "point_photo_image": 48,
+          "point": [
+            320,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "教师办公室",
+          "photo_image": 49,
+          "point_photo_image": 50,
+          "point": [
+            416,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "学生服务室",
+          "photo_image": 51,
+          "point_photo_image": 52,
+          "point": [
+            512,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        }
+      ]
+    },
+    {
+      "name": "2层教学楼",
+      "map_image": 2,
+      "rooms": [
+        {
+          "name": "物理实验室",
+          "photo_image": 10,
+          "point": [
+            96,
+            96
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": true,
+          "activity": "实验课程，请按时到场。",
+          "point_photo_image": 28
+        },
+        {
+          "name": "化学实验室",
+          "photo_image": 11,
+          "point": [
+            320,
+            112
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 29
+        },
+        {
+          "name": "数学教研室",
+          "photo_image": 12,
+          "point": [
+            544,
+            96
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 30
+        },
+        {
+          "name": "计算机教室",
+          "photo_image": 13,
+          "point": [
+            128,
+            352
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 31
+        },
+        {
+          "name": "图书阅览室",
+          "photo_image": 14,
+          "point_photo_image": 32,
+          "point": [
+            512,
+            200
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "生物实验室",
+          "photo_image": 15,
+          "point_photo_image": 33,
+          "point": [
+            128,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "音乐教室",
+          "photo_image": 53,
+          "point_photo_image": 54,
+          "point": [
+            224,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "美术教室",
+          "photo_image": 55,
+          "point_photo_image": 56,
+          "point": [
+            320,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "教师办公室",
+          "photo_image": 57,
+          "point_photo_image": 58,
+          "point": [
+            416,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "学生服务室",
+          "photo_image": 59,
+          "point_photo_image": 60,
+          "point": [
+            512,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        }
+      ]
+    },
+    {
+      "name": "3层教学楼",
+      "map_image": 3,
+      "rooms": [
+        {
+          "name": "物理实验室",
+          "photo_image": 16,
+          "point": [
+            96,
+            96
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": true,
+          "activity": "实验课程，请按时到场。",
+          "point_photo_image": 34
+        },
+        {
+          "name": "化学实验室",
+          "photo_image": 17,
+          "point": [
+            320,
+            112
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 35
+        },
+        {
+          "name": "数学教研室",
+          "photo_image": 18,
+          "point": [
+            544,
+            96
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 36
+        },
+        {
+          "name": "计算机教室",
+          "photo_image": 19,
+          "point": [
+            128,
+            352
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 37
+        },
+        {
+          "name": "图书阅览室",
+          "photo_image": 20,
+          "point": [
+            336,
+            360
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "point_photo_image": 38
+        },
+        {
+          "name": "生物实验室",
+          "photo_image": 21,
+          "point_photo_image": 39,
+          "point": [
+            128,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "音乐教室",
+          "photo_image": 61,
+          "point_photo_image": 62,
+          "point": [
+            224,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "美术教室",
+          "photo_image": 63,
+          "point_photo_image": 64,
+          "point": [
+            320,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "教师办公室",
+          "photo_image": 65,
+          "point_photo_image": 66,
+          "point": [
+            416,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        },
+        {
+          "name": "学生服务室",
+          "photo_image": 67,
+          "point_photo_image": 68,
+          "point": [
+            512,
+            380
+          ],
+          "description": "用于日常教学与学生实践。",
+          "today_activity": false,
+          "activity": "",
+          "placeholder": true
+        }
+      ]
+    }
+  ],
+  "_notes": "活动为演示示例，请按当日实际安排修改 today_activity 和 activity；占用状态独立。"
+}

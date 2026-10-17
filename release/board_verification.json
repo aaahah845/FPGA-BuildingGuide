@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-16",
+  "status": "passed_user_reported",
+  "bitstream": "image_nav_cache_tailfix_seed61_untested.bit",
+  "sha256": "08170d73721e6962a7bc4e840f9ea6f090a0e8bea38980df77d1637189e0d134",
+  "user_statement": "已经确认,修改",
+  "context": "用户在尾槽修复版确认后授权同步报告，记录为该版上板验证通过。",
+  "continuous_run_minutes_minimum": null,
+  "individual_test_coverage": null,
+  "independently_observed_by_codex": false,
+  "prior_continuous_run_evidence": {
+    "project": "lab_image_photo_overlay_20261015",
+    "record": "prior_board_verification_20261015.json",
+    "date": "2026-10-15",
+    "sha256": "4d9136727276f974011ddd6bb3089e0d0d67eeebaa472a804d31dfe0b3618d19",
+    "continuous_run_minutes_minimum": 30,
+    "statement": "已复测全部功能并连续运行至少30分钟，无异常"
+  },
+  "static_timing_closed": false
+}

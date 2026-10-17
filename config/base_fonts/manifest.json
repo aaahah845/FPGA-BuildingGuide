@@ -1,0 +1,32 @@
+{
+  "format": "V6 payload: 4096 little-endian uint32 large words, 1536 uint16 notes words",
+  "sha256": "bedebac76a3e991630a7e118ac3ced79d066b7b42514586a83fb9713d790cdaa",
+  "source_sha256": {
+    "guide_large_font.v": "f90afa442b630dd12e3d8eeeb681fc1599f3dde27593c9522a0f2fe9326a90ce",
+    "room_notes_font.v": "49c5714f076a183cd7a0387a932638b76cb376d73cf691fc9393a4c48cd3def5"
+  },
+  "large_chars": " 0123456789:拨上SW查看详情下返回总览占用空闲会议室时间临图片准备中长按K修改轮播开关楼层秒放大缩小企业导视房列表当前选择宣传切定位照接待洽谈培训一二共享工研发项目讨论频评审报告厅协作面试休息区多功能布局全预部左右移动读取失败",
+  "notes_chars": " 0123456789:，。；、（）-房间简介今日活动暂无用于来访接待与咨询小组洽谈交流项目请提前到场课程培训学习常会议讨论供共享办公工位研发协作支持视频评审报告集中面试休息空",
+  "preserve_large_ids": [
+    0,
+    29,
+    30,
+    56,
+    57,
+    58,
+    59
+  ],
+  "preserve_notes_ids": [
+    0,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+  ]
+}

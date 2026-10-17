@@ -1,0 +1,9 @@
+# Preserve delivered bytes across clones so SHA256SUMS.txt remains valid.
+* -text
+*.bit binary
+*.bin binary
+*.CFG binary
+*.BMP binary
+*.WAV binary
+*.jpg binary
+*.png binary

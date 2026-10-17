@@ -1,0 +1,27 @@
+{
+  "release_name": "20261015 报告定稿基准",
+  "project": "src/td_project/image_multiview_gui.al",
+  "physical_run": "phy_seed23",
+  "bitstream": "image_nav_final_20261015.bit",
+  "original_candidate": "image_nav_photo_overlay_seed23_untested.bit",
+  "sha256": "4d9136727276f974011ddd6bb3089e0d0d67eeebaa472a804d31dfe0b3618d19",
+  "source_files_verified": 98,
+  "bitstream_rebuilt": false,
+  "site_cfg_changed": false,
+  "board_test": {
+    "status": "passed_user_reported",
+    "recorded_at": "2026-10-15T05:26:09.149627-04:00",
+    "source": "本次对话中用户对当前 overlay seed23 版本的上板反馈",
+    "statement": "已复测全部功能并连续运行至少30分钟，无异常",
+    "continuous_run_minutes_minimum": 30,
+    "independently_observed_by_codex": false,
+    "not_measured": [
+      "重复冷启动成功率",
+      "启动及图片加载耗时",
+      "温度和电压边界覆盖"
+    ],
+    "static_timing_closed": false
+  },
+  "timing_evidence": "overlay_seed23_timing.rpt",
+  "area_evidence": "overlay_seed23_area.rpt"
+}
