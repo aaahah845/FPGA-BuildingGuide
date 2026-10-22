@@ -101,3 +101,40 @@ case({vertical,frame_number})
 6'd62:eased_scene_distance=10'd0;
 default:eased_scene_distance=0;
 endcase end endfunction
+
+// Same 30-frame easing curve, 640-pixel travel for native carousel.
+function [9:0] native_slide_position; input [4:0] frame_number; begin
+case(frame_number)
+5'd0:native_slide_position=10'd0;
+5'd1:native_slide_position=10'd1;
+5'd2:native_slide_position=10'd7;
+5'd3:native_slide_position=10'd16;
+5'd4:native_slide_position=10'd29;
+5'd5:native_slide_position=10'd49;
+5'd6:native_slide_position=10'd75;
+5'd7:native_slide_position=10'd109;
+5'd8:native_slide_position=10'd151;
+5'd9:native_slide_position=10'd197;
+5'd10:native_slide_position=10'd249;
+5'd11:native_slide_position=10'd300;
+5'd12:native_slide_position=10'd349;
+5'd13:native_slide_position=10'd393;
+5'd14:native_slide_position=10'd432;
+5'd15:native_slide_position=10'd467;
+5'd16:native_slide_position=10'd496;
+5'd17:native_slide_position=10'd521;
+5'd18:native_slide_position=10'd543;
+5'd19:native_slide_position=10'd563;
+5'd20:native_slide_position=10'd579;
+5'd21:native_slide_position=10'd592;
+5'd22:native_slide_position=10'd603;
+5'd23:native_slide_position=10'd613;
+5'd24:native_slide_position=10'd621;
+5'd25:native_slide_position=10'd627;
+5'd26:native_slide_position=10'd632;
+5'd27:native_slide_position=10'd636;
+5'd28:native_slide_position=10'd639;
+5'd29:native_slide_position=10'd640;
+5'd30:native_slide_position=10'd640;
+default:native_slide_position=10'd640;
+endcase end endfunction

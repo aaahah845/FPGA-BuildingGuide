@@ -362,7 +362,7 @@
                 <param>set_param gate pack_effort high</param>
             </UserParams>
         </Run>
-        <Run Name="phy_seed61" Type="PhysicalDesign" ConstraintSet="constraint_1" Description="Cache tail ownership fix; user board verification recorded 2026-10-16" SynRun="syn_1" Active="true">
+        <Run Name="phy_seed61" Type="PhysicalDesign" ConstraintSet="constraint_1" Description="Cache tail ownership fix only; board test pending" SynRun="syn_1" Active="true">
             <Strategy Name="Default_PhysicalDesign_Strategy">
                 <PlaceProperty>
                     <ofv>70</ofv>

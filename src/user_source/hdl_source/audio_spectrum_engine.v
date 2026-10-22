@@ -15,20 +15,19 @@
 //   state 21    翻转 published_bank，双缓冲发布结果
 // 每个 bin 宽 48000/512 = 93.75 Hz。计算期间暂停采集，不影响音频播放。
 // ============================================================================
-module audio_spectrum_engine (
-    input clk, rst, pcm_valid,
+module audio_spectrum_engine(
+    input clk,rst,pcm_valid,
     input signed [23:0] pcm_left,
     input [6:0] level_address,
     output [4:0] level_value,
     output reg published_bank,
     output reg result_valid
 );
-    (* syn_ramstyle="distributed_ram" *) reg [4:0] spectrum_heights[0:127];
-    assign level_value = spectrum_heights[level_address];
+(* syn_ramstyle="distributed_ram" *) reg [4:0] spectrum_heights[0:127];
+assign level_value=spectrum_heights[level_address];
 
-    (* syn_ramstyle="block_ram" *) reg [31:0] mem[0:511];
-    (* syn_romstyle="block_rom" *) reg [15:0] twiddle[0:511];
-    // verilog_format: off
+(* syn_ramstyle="block_ram" *) reg [31:0] mem[0:511];
+(* syn_romstyle="block_rom" *) reg [15:0] twiddle[0:511];
 // reflow:off  旋转因子表：偶数项 cos、奇数项 −sin，Q15，共 256 组
  initial begin
   twiddle[0]=16'h7fff; twiddle[1]=16'h0000;
@@ -289,313 +288,299 @@ module audio_spectrum_engine (
   twiddle[510]=16'h8003; twiddle[511]=16'hfe6e;
  end
  // reflow:on
-// verilog_format: on
-    reg [31:0] mem_q;
-    reg signed [15:0] tw_q, tw_cos, tw_sin;
-    reg [4:0] state;
-    reg [8:0] capture_index, base, j, half_size, tw_index, tw_step, scan_bin;
-    reg [3:0] stage;
-    reg [5:0] band;
-    reg signed [15:0] ar, ai, br, bi, mul_a, mul_b;
-    reg signed [31:0] product;
-    reg signed [16:0] rr, ri, tr, ti;
-    reg [15:0] band_peak, magnitude_q, peak_q;
-    reg [4:0] height_q;
-    reg [8:0] band_limit;
+reg [31:0] mem_q;
+reg signed [15:0] tw_q,tw_cos,tw_sin;
+reg [4:0] state;
+reg [8:0] capture_index,base,j,half_size,tw_index,tw_step,scan_bin;
+reg [3:0] stage;
+reg [5:0] band;
+reg signed [15:0] ar,ai,br,bi,mul_a,mul_b;
+reg signed [31:0] product;
+reg signed [16:0] rr,ri,tr,ti;
+reg [15:0] band_peak,magnitude_q,peak_q;
+reg [4:0] height_q;
+reg [8:0] band_limit;
 
-    wire [8:0] reverse_index = {
-        capture_index[0],
-        capture_index[1],
-        capture_index[2],
-        capture_index[3],
-        capture_index[4],
-        capture_index[5],
-        capture_index[6],
-        capture_index[7],
-        capture_index[8]
-    };
-    wire [8:0] addr_a = base + j, addr_b = base + j + half_size;
-    wire [8:0]
-        read_addr = (state == 4 || state == 5) ? addr_a : (state == 6 || state == 7) ? addr_b : scan_bin;
-    wire signed [17:0] sum_r = $signed(ar) + $signed(tr), sum_i = $signed(ai) + $signed(ti);
-    wire signed [17:0] diff_r = $signed(ar) - $signed(tr), diff_i = $signed(ai) - $signed(ti);
-    wire signed [31:0] windowed = product >>> 15;
-    wire [15:0] abs_r = mem_q[31] ? (~mem_q[31:16] + 16'd1) : mem_q[31:16];
-    wire [15:0] abs_i = mem_q[15] ? (~mem_q[15:0] + 16'd1) : mem_q[15:0];
-    // Approximate complex magnitude: max + min/2 (under 1 dB error).
-    wire [16:0] magnitude = abs_r >= abs_i ?
-        {1'b0, abs_r} + {2'b0, abs_i[15:1]} : {1'b0, abs_i} + {2'b0, abs_r[15:1]};
-    wire [15:0] peak = magnitude > band_peak ? magnitude[15:0] : band_peak;
-    function [8:0] band_end;
-        input [5:0] b;
-        begin
-            case (b)
-                0:  band_end = 9'd1;
-                1:  band_end = 9'd2;
-                2:  band_end = 9'd3;
-                3:  band_end = 9'd4;
-                4:  band_end = 9'd5;
-                5:  band_end = 9'd6;
-                6:  band_end = 9'd7;
-                7:  band_end = 9'd8;
-                8:  band_end = 9'd9;
-                9:  band_end = 9'd10;
-                10: band_end = 9'd11;
-                11: band_end = 9'd12;
-                12: band_end = 9'd13;
-                13: band_end = 9'd14;
-                14: band_end = 9'd15;
-                15: band_end = 9'd16;
-                16: band_end = 9'd17;
-                17: band_end = 9'd18;
-                18: band_end = 9'd19;
-                19: band_end = 9'd20;
-                20: band_end = 9'd21;
-                21: band_end = 9'd22;
-                22: band_end = 9'd23;
-                23: band_end = 9'd24;
-                24: band_end = 9'd25;
-                25: band_end = 9'd26;
-                26: band_end = 9'd27;
-                27: band_end = 9'd28;
-                28: band_end = 9'd29;
-                29: band_end = 9'd30;
-                30: band_end = 9'd31;
-                31: band_end = 9'd32;
-                32: band_end = 9'd33;
-                33: band_end = 9'd34;
-                34: band_end = 9'd35;
-                35: band_end = 9'd36;
-                36: band_end = 9'd37;
-                37: band_end = 9'd38;
-                38: band_end = 9'd39;
-                39: band_end = 9'd40;
-                40: band_end = 9'd41;
-                41: band_end = 9'd42;
-                42: band_end = 9'd43;
-                43: band_end = 9'd45;
-                44: band_end = 9'd49;
-                45: band_end = 9'd54;
-                46: band_end = 9'd59;
-                47: band_end = 9'd64;
-                48: band_end = 9'd70;
-                49: band_end = 9'd76;
-                50: band_end = 9'd83;
-                51: band_end = 9'd90;
-                52: band_end = 9'd98;
-                53: band_end = 9'd107;
-                54: band_end = 9'd117;
-                55: band_end = 9'd128;
-                56: band_end = 9'd139;
-                57: band_end = 9'd152;
-                58: band_end = 9'd165;
-                59: band_end = 9'd180;
-                60: band_end = 9'd197;
-                61: band_end = 9'd214;
-                62: band_end = 9'd234;
-                63: band_end = 9'd255;
-            endcase
-        end
-    endfunction
-    function [4:0] db_height;
-        input [15:0] v;
-        begin
-            if (v < 8) db_height = 5'd0;
-            else if (v < 11) db_height = 5'd1;
-            else if (v < 16) db_height = 5'd2;
-            else if (v < 23) db_height = 5'd3;
-            else if (v < 32) db_height = 5'd4;
-            else if (v < 45) db_height = 5'd5;
-            else if (v < 64) db_height = 5'd6;
-            else if (v < 90) db_height = 5'd7;
-            else if (v < 127) db_height = 5'd8;
-            else if (v < 179) db_height = 5'd9;
-            else if (v < 253) db_height = 5'd10;
-            else if (v < 357) db_height = 5'd11;
-            else if (v < 505) db_height = 5'd12;
-            else if (v < 713) db_height = 5'd13;
-            else if (v < 1007) db_height = 5'd14;
-            else if (v < 1423) db_height = 5'd15;
-            else if (v < 2010) db_height = 5'd16;
-            else if (v < 2839) db_height = 5'd17;
-            else if (v < 4009) db_height = 5'd18;
-            else if (v < 5664) db_height = 5'd19;
-            else if (v < 8000) db_height = 5'd20;
-            else if (v < 11300) db_height = 5'd21;
-            else if (v < 15962) db_height = 5'd22;
-            else db_height = 23;
-        end
-    endfunction
-    always @(posedge clk) if (!rst && state == 24) spectrum_heights[{!published_bank, band}] <= height_q;
-    wire write_enable = state == 2 || state == 16 || state == 17;
-    wire [8:0] write_addr = state == 2 ? reverse_index : state == 16 ? addr_a : addr_b;
-    wire [31:0] write_value = state == 2 ? {windowed[15:0], 16'd0} :
-        state == 16 ? {sum_r[16:1], sum_i[16:1]} : {diff_r[16:1], diff_i[16:1]};
-    always @(posedge clk) begin
-        band_limit <= band_end(band);
-        product <= mul_a * mul_b;
-        mem_q <= mem[read_addr];
-        tw_q <= twiddle[{tw_index[7:0], (state==6||state==7)}];
-        if (!rst && write_enable) mem[write_addr] <= write_value;
+wire [8:0] reverse_index={capture_index[0],capture_index[1],capture_index[2],capture_index[3],capture_index[4],capture_index[5],capture_index[6],capture_index[7],capture_index[8]};
+wire [8:0] addr_a=base+j,addr_b=base+j+half_size;
+wire [8:0] read_addr=(state==4 || state==5)?addr_a:(state==6 || state==7)?addr_b:scan_bin;
+wire signed [17:0] sum_r=$signed(ar)+$signed(tr),sum_i=$signed(ai)+$signed(ti);
+wire signed [17:0] diff_r=$signed(ar)-$signed(tr),diff_i=$signed(ai)-$signed(ti);
+wire signed [31:0] windowed=product>>>15;
+wire [15:0] abs_r=mem_q[31]? (~mem_q[31:16]+16'd1):mem_q[31:16];
+wire [15:0] abs_i=mem_q[15]? (~mem_q[15:0]+16'd1):mem_q[15:0];
+// Approximate complex magnitude: max + min/2 (under 1 dB error).
+wire [16:0] magnitude=abs_r>=abs_i?{1'b0,abs_r}+{2'b0,abs_i[15:1]}:{1'b0,abs_i}+{2'b0,abs_r[15:1]};
+wire [15:0] peak=magnitude>band_peak?magnitude[15:0]:band_peak;
+function[8:0] band_end;
+    input [5:0] b;
+    begin
+        case(b)
+            0:band_end=9'd1;
+            1:band_end=9'd2;
+            2:band_end=9'd3;
+            3:band_end=9'd4;
+            4:band_end=9'd5;
+            5:band_end=9'd6;
+            6:band_end=9'd7;
+            7:band_end=9'd8;
+            8:band_end=9'd9;
+            9:band_end=9'd10;
+            10:band_end=9'd11;
+            11:band_end=9'd12;
+            12:band_end=9'd13;
+            13:band_end=9'd14;
+            14:band_end=9'd15;
+            15:band_end=9'd16;
+            16:band_end=9'd17;
+            17:band_end=9'd18;
+            18:band_end=9'd19;
+            19:band_end=9'd20;
+            20:band_end=9'd21;
+            21:band_end=9'd22;
+            22:band_end=9'd23;
+            23:band_end=9'd24;
+            24:band_end=9'd25;
+            25:band_end=9'd26;
+            26:band_end=9'd27;
+            27:band_end=9'd28;
+            28:band_end=9'd29;
+            29:band_end=9'd30;
+            30:band_end=9'd31;
+            31:band_end=9'd32;
+            32:band_end=9'd33;
+            33:band_end=9'd34;
+            34:band_end=9'd35;
+            35:band_end=9'd36;
+            36:band_end=9'd37;
+            37:band_end=9'd38;
+            38:band_end=9'd39;
+            39:band_end=9'd40;
+            40:band_end=9'd41;
+            41:band_end=9'd42;
+            42:band_end=9'd43;
+            43:band_end=9'd45;
+            44:band_end=9'd49;
+            45:band_end=9'd54;
+            46:band_end=9'd59;
+            47:band_end=9'd64;
+            48:band_end=9'd70;
+            49:band_end=9'd76;
+            50:band_end=9'd83;
+            51:band_end=9'd90;
+            52:band_end=9'd98;
+            53:band_end=9'd107;
+            54:band_end=9'd117;
+            55:band_end=9'd128;
+            56:band_end=9'd139;
+            57:band_end=9'd152;
+            58:band_end=9'd165;
+            59:band_end=9'd180;
+            60:band_end=9'd197;
+            61:band_end=9'd214;
+            62:band_end=9'd234;
+            63:band_end=9'd255;
+        endcase
     end
-    always @(posedge clk or posedge rst) begin
-        if (rst) begin
-            state <= 0;
-            capture_index <= 0;
-            base <= 0;
-            j <= 0;
-            half_size <= 1;
-            tw_index <= 0;
-            tw_step <= 256;
-            stage <= 0;
-            scan_bin <= 1;
-            band <= 0;
-            band_peak <= 0;
-            magnitude_q <= 0;
-            peak_q <= 0;
-            height_q <= 0;
-            published_bank <= 0;
-            result_valid <= 0;
-            ar <= 0;
-            ai <= 0;
-            br <= 0;
-            bi <= 0;
-            tw_cos <= 0;
-            tw_sin <= 0;
-            mul_a <= 0;
-            mul_b <= 0;
-            rr <= 0;
-            ri <= 0;
-            tr <= 0;
-            ti <= 0;
-        end else begin
-            result_valid <= 0;
-            case (state)
-                0:
-                if (pcm_valid) begin
-                    mul_a <= pcm_left[23:8];
-                    mul_b <= capture_index[8] ? {(9'd511 - capture_index), 7'd0} : {capture_index, 7'd0};
-                    // Bartlett window reduces leakage; only the analysis copy is windowed.
-                    state <= 1;
-                end
-                1: state <= 2;
-                2: begin
-                    capture_index <= capture_index + 1'b1;
-                    if (capture_index == 511) begin
-                        stage <= 0;
-                        base <= 0;
-                        j <= 0;
-                        half_size <= 1;
-                        tw_index <= 0;
-                        tw_step <= 256;
-                        state <= 4;
-                    end else state <= 0;
-                end
-                4: state <= 5;
-                5: begin
-                    ar <= mem_q[31:16];
-                    ai <= mem_q[15:0];
-                    tw_cos <= tw_q;
-                    state <= 6;
-                end
-                6: state <= 7;
-                7: begin
-                    br <= mem_q[31:16];
-                    bi <= mem_q[15:0];
-                    tw_sin <= tw_q;
-                    mul_a <= mem_q[31:16];
-                    mul_b <= tw_cos;
-                    state <= 8;
-                end
-                8: state <= 9;
-                9: begin
-                    rr <= product >>> 15;
-                    mul_a <= bi;
-                    mul_b <= tw_sin;
-                    state <= 10;
-                end
-                10: state <= 11;
-                11: begin
-                    tr <= rr - ($signed(product) >>> 15);
-                    mul_a <= br;
-                    mul_b <= tw_sin;
-                    state <= 12;
-                end
-                12: state <= 13;
-                13: begin
-                    ri <= product >>> 15;
-                    mul_a <= bi;
-                    mul_b <= tw_cos;
-                    state <= 14;
-                end
-                14: state <= 15;
-                15: begin
-                    ti <= ri + ($signed(product) >>> 15);
-                    state <= 16;
-                end
-                16: state <= 17;
-                17: state <= 18;
-                18: begin
-                    if (j + 1 < half_size) begin
-                        j <= j + 1'b1;
-                        tw_index <= tw_index + tw_step;
-                        state <= 4;
-                    end else if ({1'b0, base} + {half_size, 1'b0} < 512) begin
-                        base <= base + {half_size[7:0], 1'b0};
-                        j <= 0;
-                        tw_index <= 0;
-                        state <= 4;
-                    end else if (stage < 8) begin
-                        stage <= stage + 1'b1;
-                        half_size <= half_size << 1;
-                        tw_step <= tw_step >> 1;
-                        base <= 0;
-                        j <= 0;
-                        tw_index <= 0;
-                        state <= 4;
-                    end else begin
-                        scan_bin <= 1;
-                        band <= 0;
-                        band_peak <= 0;
-                        state <= 19;
-                    end
-                end
-                19: state <= 20;
-                20: begin
-                    magnitude_q <= magnitude[15:0];
-                    state <= 22;
-                end
-                22: begin
-                    peak_q <= magnitude_q > band_peak ? magnitude_q : band_peak;
-                    state <= 23;
-                end
-                23: begin
-                    if (scan_bin == band_limit) begin
-                        height_q <= db_height(peak_q);
-                        state <= 24;
-                    end else begin
-                        band_peak <= peak_q;
-                        scan_bin <= scan_bin + 1'b1;
-                        state <= 19;
-                    end
-                end
-                24: begin
-                    band <= band + 1'b1;
-                    band_peak <= 0;
-                    if (scan_bin == 255) state <= 21;
-                    else begin
-                        scan_bin <= scan_bin + 1'b1;
-                        state <= 19;
-                    end
-                end
-                21: begin
-                    published_bank <= !published_bank;
-                    result_valid <= 1;
-                    state <= 0;
-                end
-                default: state <= 0;
-            endcase
-        end
+endfunction
+function[4:0] db_height;
+    input [15:0] v;
+    begin
+        if(v<8) db_height=5'd0;
+        else if(v<11) db_height=5'd1;
+        else if(v<16) db_height=5'd2;
+        else if(v<23) db_height=5'd3;
+        else if(v<32) db_height=5'd4;
+        else if(v<45) db_height=5'd5;
+        else if(v<64) db_height=5'd6;
+        else if(v<90) db_height=5'd7;
+        else if(v<127) db_height=5'd8;
+        else if(v<179) db_height=5'd9;
+        else if(v<253) db_height=5'd10;
+        else if(v<357) db_height=5'd11;
+        else if(v<505) db_height=5'd12;
+        else if(v<713) db_height=5'd13;
+        else if(v<1007) db_height=5'd14;
+        else if(v<1423) db_height=5'd15;
+        else if(v<2010) db_height=5'd16;
+        else if(v<2839) db_height=5'd17;
+        else if(v<4009) db_height=5'd18;
+        else if(v<5664) db_height=5'd19;
+        else if(v<8000) db_height=5'd20;
+        else if(v<11300) db_height=5'd21;
+        else if(v<15962) db_height=5'd22;
+        else db_height=23;
     end
+endfunction
+always @(posedge clk)
+    if(!rst && state==24) spectrum_heights[{!published_bank,band}]<=height_q;
+wire write_enable=state==2 || state==16 || state==17;
+wire [8:0] write_addr=state==2?reverse_index:state==16?addr_a:addr_b;
+wire [31:0] write_value=state==2?{windowed[15:0],16'd0}:state==16?{sum_r[16:1],sum_i[16:1]}:{diff_r[16:1],diff_i[16:1]};
+always @(posedge clk) begin
+    band_limit<=band_end(band);
+    product<=mul_a*mul_b;
+    mem_q<=mem[read_addr];
+    tw_q<=twiddle[{tw_index[7:0],(state==6 || state==7)}];
+    if(!rst && write_enable) mem[write_addr]<=write_value;
+end
+always @(posedge clk or posedge rst) begin
+    if(rst) begin
+        state<=0;
+        capture_index<=0;
+        base<=0;
+        j<=0;
+        half_size<=1;
+        tw_index<=0;
+        tw_step<=256;
+        stage<=0;
+        scan_bin<=1;
+        band<=0;
+        band_peak<=0;
+        magnitude_q<=0;
+        peak_q<=0;
+        height_q<=0;
+        published_bank<=0;
+        result_valid<=0;
+        ar<=0;
+        ai<=0;
+        br<=0;
+        bi<=0;
+        tw_cos<=0;
+        tw_sin<=0;
+        mul_a<=0;
+        mul_b<=0;
+        rr<=0;
+        ri<=0;
+        tr<=0;
+        ti<=0;
+    end else begin
+        result_valid<=0;
+        case(state)
+            0:if(pcm_valid) begin
+                mul_a<=pcm_left[23:8];
+                mul_b<=capture_index[8]?{(9'd511-capture_index),7'd0}:{capture_index,7'd0};
+                // Bartlett window reduces leakage; only the analysis copy is windowed.
+                state<=1;
+            end
+            1:state<=2;
+            2: begin
+                capture_index<=capture_index+1'b1;
+                if(capture_index==511) begin
+                    stage<=0;
+                    base<=0;
+                    j<=0;
+                    half_size<=1;
+                    tw_index<=0;
+                    tw_step<=256;
+                    state<=4;
+                end else state<=0;
+            end
+            4:state<=5;
+            5: begin
+                ar<=mem_q[31:16];
+                ai<=mem_q[15:0];
+                tw_cos<=tw_q;
+                state<=6;
+            end
+            6:state<=7;
+            7: begin
+                br<=mem_q[31:16];
+                bi<=mem_q[15:0];
+                tw_sin<=tw_q;
+                mul_a<=mem_q[31:16];
+                mul_b<=tw_cos;
+                state<=8;
+            end
+            8:state<=9;
+            9: begin
+                rr<=product>>>15;
+                mul_a<=bi;
+                mul_b<=tw_sin;
+                state<=10;
+            end
+            10:state<=11;
+            11: begin
+                tr<=rr-($signed(product)>>>15);
+                mul_a<=br;
+                mul_b<=tw_sin;
+                state<=12;
+            end
+            12:state<=13;
+            13: begin
+                ri<=product>>>15;
+                mul_a<=bi;
+                mul_b<=tw_cos;
+                state<=14;
+            end
+            14:state<=15;
+            15: begin
+                ti<=ri+($signed(product)>>>15);
+                state<=16;
+            end
+            16:state<=17;
+            17:state<=18;
+            18: begin
+                if(j+1<half_size) begin
+                    j<=j+1'b1;
+                    tw_index<=tw_index+tw_step;
+                    state<=4;
+                end else if({1'b0,base}+{half_size,1'b0}<512) begin
+                    base<=base+{half_size[7:0],1'b0};
+                    j<=0;
+                    tw_index<=0;
+                    state<=4;
+                end else if(stage<8) begin
+                    stage<=stage+1'b1;
+                    half_size<=half_size<<1;
+                    tw_step<=tw_step>>1;
+                    base<=0;
+                    j<=0;
+                    tw_index<=0;
+                    state<=4;
+                end else begin
+                    scan_bin<=1;
+                    band<=0;
+                    band_peak<=0;
+                    state<=19;
+                end
+            end
+            19:state<=20;
+            20: begin
+                magnitude_q<=magnitude[15:0];
+                state<=22;
+            end
+            22: begin
+                peak_q<=magnitude_q>band_peak?magnitude_q:band_peak;
+                state<=23;
+            end
+            23: begin
+                if(scan_bin==band_limit) begin
+                    height_q<=db_height(peak_q);
+                    state<=24;
+                end else begin
+                    band_peak<=peak_q;
+                    scan_bin<=scan_bin+1'b1;
+                    state<=19;
+                end
+            end
+            24: begin
+                band<=band+1'b1;
+                band_peak<=0;
+                if(scan_bin==255) state<=21;
+                else begin
+                    scan_bin<=scan_bin+1'b1;
+                    state<=19;
+                end
+            end
+            21: begin
+                published_bank<=!published_bank;
+                result_valid<=1;
+                state<=0;
+            end
+            default:state<=0;
+        endcase
+    end
+end
 endmodule
 `endif

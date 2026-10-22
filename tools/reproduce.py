@@ -214,9 +214,48 @@ def cache_test(vsim):
             'seconds': seconds, 'log': str(work/'simulation.log')}
 
 
+def layout_test(vsim):
+    executable = Path(vsim).resolve() if vsim else shutil.which('vsim')
+    if not executable or not Path(executable).is_file():
+        raise RuntimeError('Specify --vsim with the simulator executable.')
+    work = work_dir('layout_test')
+    shutil.copytree(SRC,work/'hdl_source')
+    shutil.copy2(ROOT/'sim/tb_layout_fade.v',work/'tb_layout_fade.v')
+    script = '\n'.join(['onerror {quit -code 1 -f}','onbreak {quit -code 1 -f}',
+        'vlib work_layout','vlog -sv -work work_layout +incdir+hdl_source hdl_source/site_scene_broker.v tb_layout_fade.v',
+        'vsim -c -onfinish exit work_layout.tb_layout_fade','run -all','quit -code 0 -f'])
+    (work/'run.do').write_text(script+'\n',encoding='utf-8')
+    output, seconds = command([str(executable),'-c','-do','run.do'],work,work/'simulation.log',180)
+    if 'PASS: layout waits' not in output or re.search(r'\*\*\s+(Error|Fatal):',output):
+        raise RuntimeError(f'Layout regression failed: {work}')
+    return {'pass':True,'seconds':seconds,'log':str(work/'simulation.log')}
+
+
+def native_test(vsim):
+    executable = Path(vsim).resolve() if vsim else shutil.which('vsim')
+    if not executable or not Path(executable).is_file():
+        raise RuntimeError('Specify --vsim with the simulator executable.')
+    work = work_dir('native_test')
+    shutil.copytree(SRC,work/'hdl_source')
+    shutil.copy2(ROOT/'sim/tb_carousel_native_compositor.v',work/'tb_carousel_native_compositor.v')
+    packet=(ROOT/'TF_CARD/SITE.CFG').read_bytes()
+    (work/'config.hex').write_text(''.join(f'{b:02x}\n' for b in packet[:8192]),encoding='ascii')
+    words=[int.from_bytes(packet[i:i+4],'little') for i in range(8192,24576,4)]
+    words += [int.from_bytes(packet[i:i+2],'little') for i in range(24576,27648,2)]
+    (work/'fonts.hex').write_text(''.join(f'{v:05x}\n' for v in words),encoding='ascii')
+    script='\n'.join(['onerror {quit -code 1 -f}','onbreak {quit -code 1 -f}',
+        'vlib work_native','vlog -sv -work work_native +incdir+hdl_source hdl_source/guide_scene_compositor.v tb_carousel_native_compositor.v',
+        'vsim -c -onfinish exit work_native.tb_carousel_native_compositor','run -all','quit -code 0 -f'])
+    (work/'run.do').write_text(script+'\n',encoding='utf-8')
+    output,seconds=command([str(executable),'-c','-do','run.do'],work,work/'simulation.log',300)
+    if 'PASS: header/footer remain visible' not in output or re.search(r'\*\*\s+(Error|Fatal):',output):
+        raise RuntimeError(f'Native compositor regression failed: {work}')
+    return {'pass':True,'seconds':seconds,'log':str(work/'simulation.log')}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action',choices=['check','export-check','td-check','build','cache-test'])
+    parser.add_argument('action',choices=['check','export-check','td-check','build','cache-test','layout-test','native-test'])
     parser.add_argument('--td-root',type=Path,help='Tang Dynasty installation directory')
     parser.add_argument('--vsim',type=Path,help='ModelSim/Questa vsim executable')
     args = parser.parse_args()
@@ -225,6 +264,8 @@ def main():
     if args.action == 'check': result = check()
     elif args.action == 'export-check': result = export_check()
     elif args.action == 'cache-test': result = cache_test(args.vsim)
+    elif args.action == 'layout-test': result = layout_test(args.vsim)
+    elif args.action == 'native-test': result = native_test(args.vsim)
     else: result = td_operation(args.td_root, args.action == 'build')
     print(json.dumps(result, ensure_ascii=False, indent=2))
 

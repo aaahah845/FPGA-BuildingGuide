@@ -1,0 +1,763 @@
+{
+  "edition": "20261017_GitHub_reproduction",
+  "functional_version": "20261016_cache_tailfix",
+  "project": "src/td_project/image_multiview_gui.al",
+  "board": "HX4S20C",
+  "fpga": "EG4S20BG256",
+  "td_version": "6.2.168116",
+  "synthesis_run": "syn_1",
+  "physical_run": "phy_seed61",
+  "bitstream": "release/image_nav_cache_tailfix_seed61_untested.bit",
+  "bitstream_sha256": "08170d73721e6962a7bc4e840f9ea6f090a0e8bea38980df77d1637189e0d134",
+  "config_json": "config/runtime_site.json",
+  "site_cfg": "TF_CARD/SITE.CFG",
+  "site_cfg_sha256": "d2395df19ca7a3c8c60a36b2b3397239871265bfe76b99453fc82d56d8c5677c",
+  "python_environment": {
+    "python": "3.12.14",
+    "Pillow": "12.3.0",
+    "fonttools": "4.67.0"
+  },
+  "export_font_hashes": {
+    "msyhbd.ttc": "4508821b3dffe01f0ef5e5326a3e60df705a44633858811f67b6982dce3f6ee6",
+    "msyh.ttc": "d79c55e68b1131eea0cc1c47be4f572d964f28c682e143db2ad09c1e4cb07a3f"
+  },
+  "images": [
+    {
+      "file": "BACK.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "MAP1.BMP",
+      "width": 960,
+      "height": 563,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "MAP2.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "MAP3.BMP",
+      "width": 966,
+      "height": 600,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT101.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT102.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT103.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT104.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT105.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT106.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT107.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT108.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT109.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT110.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT201.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT202.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT203.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT204.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT205.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT206.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT207.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT208.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT209.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT210.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT301.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT302.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT303.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT304.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT305.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT306.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT307.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT308.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT309.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "POINT310.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM101.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM102.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM103.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM104.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM105.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM106.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM107.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM108.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM109.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM110.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM201.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM202.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM203.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM204.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM205.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM206.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM207.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM208.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM209.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM210.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM301.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM302.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM303.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM304.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM305.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM306.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM307.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM308.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM309.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "ROOM310.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "SLIDE01.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "SLIDE02.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "SLIDE03.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "SPARE01.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    },
+    {
+      "file": "SPARE02.BMP",
+      "width": 640,
+      "height": 480,
+      "bits_per_pixel": 24,
+      "compression": 0
+    }
+  ],
+  "audio": [
+    {
+      "file": "FLOOR1.WAV",
+      "channels": 1,
+      "sample_rate": 48000,
+      "sample_width": 2,
+      "frames": 57600
+    },
+    {
+      "file": "FLOOR2.WAV",
+      "channels": 1,
+      "sample_rate": 48000,
+      "sample_width": 2,
+      "frames": 48000
+    },
+    {
+      "file": "FLOOR3.WAV",
+      "channels": 1,
+      "sample_rate": 48000,
+      "sample_width": 2,
+      "frames": 52800
+    },
+    {
+      "file": "MUSIC.WAV",
+      "channels": 1,
+      "sample_rate": 48000,
+      "sample_width": 2,
+      "frames": 9408000
+    },
+    {
+      "file": "UI1.WAV",
+      "channels": 1,
+      "sample_rate": 48000,
+      "sample_width": 2,
+      "frames": 3840
+    },
+    {
+      "file": "UI2.WAV",
+      "channels": 1,
+      "sample_rate": 48000,
+      "sample_width": 2,
+      "frames": 5760
+    },
+    {
+      "file": "UI3.WAV",
+      "channels": 1,
+      "sample_rate": 48000,
+      "sample_width": 2,
+      "frames": 7680
+    }
+  ],
+  "tf_card_files": {
+    "BACK.BMP": "32e36fe4ed11f5d132080c41a2a4779aa7f6448e9a02b2de79c4052ef45e22cb",
+    "FLOOR1.WAV": "8c76198007611362ae35b354f14d708e0c8e477f2ac62c1440d8bafc2b555b47",
+    "FLOOR2.WAV": "58e39ee0b01fee7afe2fe2d4adca5c9965ad97d1a2806b32a7379d37aa532819",
+    "FLOOR3.WAV": "219f1d2480bad92b9d10377ba5c47ba25bb28deb0510ca17a52a788ae13f0cc8",
+    "MAP1.BMP": "21b5502b3b1c7c3aad53f576b077c43f9f5bc8e3a32fe93b5824d9340c7822b7",
+    "MAP2.BMP": "43799546f40860aad6edf1f5a81861806622815034c3e2b239a00e5608b7969c",
+    "MAP3.BMP": "882eabe8423d1150f7b39f310e8941c82221a7e1aec0377b84e04520b6a7ef2d",
+    "MUSIC.WAV": "95ccce19c4181b02161795f61cd04976eb28cff584b9c26ca152b7edd5dbee18",
+    "POINT101.BMP": "8db82da0ca3779d2ab3920e639c91232d9e247e935f2050d787f3c4259d49d00",
+    "POINT102.BMP": "9f9fe2eddd993d79cb047b4b339ae20b24371ba508bae076987d25333d3f2d60",
+    "POINT103.BMP": "4a021dbe4b038b9c72ff6050e51cfbd0baab7f6b7cd8a837a8a9109230178389",
+    "POINT104.BMP": "df7220a36b4acf31d9089ffeb3d762a77da9d791c8d86f1e55e0b0b018c19bf4",
+    "POINT105.BMP": "501267371d1d7684067f4f4816703abc8a4dadd90789abbef6b227d13c981afe",
+    "POINT106.BMP": "84c05c994163a8d12c5ad7f79f3275dc4fd378bd92f6791022bc92b27f13a161",
+    "POINT107.BMP": "27cd9d2105b26755fcb42914bc63f8e9bc4484047b0fe53364c2f3872f4c905f",
+    "POINT108.BMP": "37945d263ad139199d141d927fd0de490c9fc66b420631981af3d11618e2d4aa",
+    "POINT109.BMP": "01adad3d0019bcd28585c05ea68c4125a568140655e4be7b34bb78e0dc618a30",
+    "POINT110.BMP": "876bb5ff3d6862b6d1ecb17d273d8c6cd5acb6048a9b91d125a6a3a445883d09",
+    "POINT201.BMP": "7586099348afdadf0bf5e73dbe8a4d389d005230825fceabc36e762e1a61bd23",
+    "POINT202.BMP": "a23482fcf75c78dc96eb6ef094fea97c1f43d3d79ab3d2ad35c32b425ba1ece3",
+    "POINT203.BMP": "420ef476dc4895d2f7ab96f00e3e4210f0d3ee9e89ee5a819d45f3f67c0b9864",
+    "POINT204.BMP": "eb0f3964fd7525da6e8eea72b27fb6474dfe30c4f8220aa18d4bd68d9a4ec37f",
+    "POINT205.BMP": "f9b5af7718bc7bdb032b7b78364ef917930ed60f41da37eb8970ee7a52907148",
+    "POINT206.BMP": "f32427487d7766e6eaa63634d078cbd48a9d3a3b7d9f757a3fb933b747686fd5",
+    "POINT207.BMP": "1e684068f66b4ee4efe10e82b8e956c16ec0891f8133f698b44bdbdb70647954",
+    "POINT208.BMP": "144c65e953e75ee2fe4d8938a34c8cfe2126ed6f53d9f025abc42c09fcaa2e8f",
+    "POINT209.BMP": "91031e8f637992accca40765ed5714cd7dd139d7495d908a54a848b64b3b4057",
+    "POINT210.BMP": "22aa27ab70e7f1bcf1766219ba7cae633d9988965fef0218d4396b62548fe206",
+    "POINT301.BMP": "59f62c3fe9ca5a0a2b6f7077ae2032a1098e3dc75bb3ee94e01ce18216d7b4e6",
+    "POINT302.BMP": "6dac636a33a2b43d2fac9d87eabb2d8ed66b86025e4e466eaa2f5b3ffbf10c95",
+    "POINT303.BMP": "66349dad9f1bf9beaf86a79074ec2c18cc9ff1a2af424962485bca123f8076cc",
+    "POINT304.BMP": "af2ea3bb2b1ee33d40a9d761333e955d96b741dffd11d8df04ddcdfdc425d5e4",
+    "POINT305.BMP": "4ab26d86af52782f062ff92bcf04a31652e8f2a3f245f2199118fda99e74967d",
+    "POINT306.BMP": "66d6a01053559daa947075904a0889fbf67078c70f3ab1832ceaa5b9ca72af9e",
+    "POINT307.BMP": "6d042a479153e8902fc226e5719c60d238a0956a2016a3dcd63c495106021171",
+    "POINT308.BMP": "6cf793537db51a0aab19fa8b0f17a63bc9d8dab2bc2b0ace903688dbf780e6d3",
+    "POINT309.BMP": "ed9b3227969d5bb87c6d2535e3fc065894d4e1d3a584c46bfeb3d4e5a339c9ae",
+    "POINT310.BMP": "a7423a7d672c5ab1a73e63f8f005f66f14d4f1fdb9113eb6807e6f9713974680",
+    "ROOM101.BMP": "46b48ce37cd52b39420b8517c0eed4fa0c7f91d8588d4033124f7b1fd5519d71",
+    "ROOM102.BMP": "86e89999e6877f36c23d539f2d8ed10d617ebe0a02ef7d842c3751cf729bc86e",
+    "ROOM103.BMP": "306e9c2c49b8ce3fcffd677d79efbd301728958ab7dcc631c17d90d2694a28bc",
+    "ROOM104.BMP": "f143f5df1d61686bc7de582b6e69eed7157b88a833b614771588fb9e9a9aa427",
+    "ROOM105.BMP": "9e7b4d391ff5c1b175491612447f2a5eaa1da89e6a21e472fc0814395fb86dc6",
+    "ROOM106.BMP": "87fe13ae345d419b5484a8988bf12f6382e06e6fbcee4b3103706abb24cccb70",
+    "ROOM107.BMP": "b3fb8586762c29635d09229c5fc4bbd1f969ed1a6999a21826c75718f3a94c27",
+    "ROOM108.BMP": "40ac0d7467f9bb0dc5b255612231d4d6e95635dfc398945f893def629645d910",
+    "ROOM109.BMP": "d8eb3c3097c2476063c8392203812e157faad99cba6ac72883fb1b260ab178c7",
+    "ROOM110.BMP": "b6b3efc4fc068c571620aa0bd54122ebcdefe90283c0191a0b0d6e458ea722fa",
+    "ROOM201.BMP": "aff72e8e050bde344786fccbc34fdd711a9fa135af3cc1881044851677b338f8",
+    "ROOM202.BMP": "6b7717169883e5d8dee53e1bf12ba0314e06a14e9cc182e247115e9f99283ea6",
+    "ROOM203.BMP": "f45ac332125590925a8c5fd3a6e4e903221079b32d76476c3a64c2f3e30ff43b",
+    "ROOM204.BMP": "6541d0ed8a7dde55841ecbc204be2be488427e9258d38ed09a0cb7ea64dc0234",
+    "ROOM205.BMP": "494644576c722f1f24d68527224a3d4c860f377184744fed88c4796011bf3f29",
+    "ROOM206.BMP": "87678522f33cad6ff4eeb08cd48351e954f0772e739ddecb3c0e01d8d8b6ed98",
+    "ROOM207.BMP": "30209fc6fe2a2e23e45cb25c33276dbf3e4a5d0bc8304c1a34b82405fdedc0a0",
+    "ROOM208.BMP": "448e30f419b85022cb8b6bb2ecd1aca7398b863ecdddc42a6fc3d5c84c762e93",
+    "ROOM209.BMP": "3eda0c302105e0fd076b4ad1315d81a5318ceded7874cd80807418adb751703a",
+    "ROOM210.BMP": "345c73f319c61cf7af6d93f884fc5718a7379d3c0c9e5056898c72d50e164f0b",
+    "ROOM301.BMP": "b57d959a7ca794fcaa60d4f8f619531619accda9f19ef1cd2f3a0f3f3b68144a",
+    "ROOM302.BMP": "64f5a0f0835c2d10bb8b9ede7c545d7fb9758584e53f45a52388277d03aa5632",
+    "ROOM303.BMP": "3bc0b188e4750e994bc009315eb71855dc73955b48e3ab9e556d09d2a3562012",
+    "ROOM304.BMP": "8a6f475d958eb18aa858ecb12d4f02014fcc86e14006f9253b1ef1eaa8596d1b",
+    "ROOM305.BMP": "e131f6439bd5921a6dbab476b39beb033208d655283305216340cdff8caedd1c",
+    "ROOM306.BMP": "1350fed471b81c16b68bbb2930cebb5d34bcdcbf86f0d71a04b1d347776b66e3",
+    "ROOM307.BMP": "4821163a1bc1148fbf8ab1aa95ca3385dc41e1f06d7f87967f6d4f69654c0585",
+    "ROOM308.BMP": "69535ed2d21f8e427720439abbf35ccd9e61a11eee00f480dcaccf7b798cd309",
+    "ROOM309.BMP": "54c77629d2b8f64e5de9e27817bad0d672ae85cf529fec7c361eb4be329cf9a7",
+    "ROOM310.BMP": "837b52622848564a6c2ac66dc4149f3f87895f722d6a1a048f5682101d63473e",
+    "SITE.CFG": "d2395df19ca7a3c8c60a36b2b3397239871265bfe76b99453fc82d56d8c5677c",
+    "SLIDE01.BMP": "bd1654d6123395204a669673fc0cea6ec8702a00808e470d661f7fbb2f55f000",
+    "SLIDE02.BMP": "e657ccb731b37eded3204fd0622bf196ff3128661c118e28a9798f64e36d400b",
+    "SLIDE03.BMP": "0567ac64c5267883786c182e8baebb64575c00e76f66ddf0c6f63624fc1fae74",
+    "SPARE01.BMP": "32e36fe4ed11f5d132080c41a2a4779aa7f6448e9a02b2de79c4052ef45e22cb",
+    "SPARE02.BMP": "3e4ba9854847da136a0961c12cb61015be507c498debcc72c00fd36f22689623",
+    "UI1.WAV": "6c96fd07944243d3eebf82d0fa46a175a7a34619fc9e1905b9bb4e87071085ef",
+    "UI2.WAV": "ce4046a8d0dd2ad061977723715b676b5bdeb7b01ebeb81eb17517c47348339a",
+    "UI3.WAV": "4260f7b0e9c9fd5d8a026e83424c0dd0ffc4e0641a6b487f7c2741b403c91df8"
+  },
+  "source_files": {
+    "src/user_source/constraints_source/edid_debug.cwc": "6716411e2346de08976e0ad8ed2e09eb93bdc0f60efc31bf75ba70e6cebe1f95",
+    "src/user_source/constraints_source/pin.adc": "4c39694cd5f03b813d370552f3bc6ae55ac49d47d7441651a8fa26503306d0b5",
+    "src/user_source/constraints_source/timing.sdc": "be868e0f70f1fb0331c1f1b7bef57c50e843ceaa903d36c71e259d1dca8eff37",
+    "src/user_source/hdl_source/audio_event_mailbox.v": "fa1922b6e4b31d4d81eeaeff9fcf13da1ad6039d51ec36ba14c71991cc8696b2",
+    "src/user_source/hdl_source/audio_output_mixer.v": "7c08b407e00dfff61e6936af34910ea36160c34391a348cf7b6336d343a1855c",
+    "src/user_source/hdl_source/audio_spectrum_engine.v": "60149f1924223e017ce09fdc0fa8cda730eea1c5e5ab5355893ec398e4254336",
+    "src/user_source/hdl_source/audio_spectrum_overlay.v": "6603305bcb333b69cc55761c3109b472e1167bd77bfa824826f15e4b245a266d",
+    "src/user_source/hdl_source/av_scene_events.v": "590f0b0058f244cab508d3146719170aff705206251995144e9de18d5293f047",
+    "src/user_source/hdl_source/carousel_timeline.v": "fb66436ad25bdf929dad686a2d0ef1eff3a0393ae1765b19d282e24c318233f6",
+    "src/user_source/hdl_source/cdc_sync.v": "61380cbb8a5cfb71710b9d247fe3fade4fe018503a42e5d93e87af1b966ac0da",
+    "src/user_source/hdl_source/direction_key_event.v": "5ad6ac77f32741e73f68f707aa3c4a71c85fc294a39963ad846975540c53ab20",
+    "src/user_source/hdl_source/eased_motion_table.vh": "1c9272a55361c720bcaf5c97ae2d6dcc7de45c39186da877d84cefb7b85f428b",
+    "src/user_source/hdl_source/floor_guide_compositor.v": "97b703e24505312d67a3893f08a434456ee7b331db9ed3cef0883010a0d63f11",
+    "src/user_source/hdl_source/guide_font_rom.v": "63a6873ed9c072795bc7eb7b461314b37ba18e7a23c08f614b7576c3a684b630",
+    "src/user_source/hdl_source/guide_key_control.v": "c70de172c600a620699d53a9f88b5997ae34a181b3dee82fb9d6da65f183a7d8",
+    "src/user_source/hdl_source/guide_large_font.v": "f90afa442b630dd12e3d8eeeb681fc1599f3dde27593c9522a0f2fe9326a90ce",
+    "src/user_source/hdl_source/guide_messages.vh": "1a9d93c9166f6f79cb4be3c9f3bd91d3e9439f6e81257c962e8220b0d8759de2",
+    "src/user_source/hdl_source/guide_nav_buttons.v": "5c9be8a674985ce837897509b27d101a26303271add050bc72ab445b6adf4c2b",
+    "src/user_source/hdl_source/guide_scene_compositor.v": "ba590b8228520c9774bdd97ebb1ce1ffcdc7a66ec4e15341f4cf1d8a88b82bdc",
+    "src/user_source/hdl_source/guide_scene_control.v": "f5a1ff4290fa77d3246920d4ad3a7395ecc0bd43f271bd44b0c0603c323ee2a7",
+    "src/user_source/hdl_source/guide_site_config.vh": "53ed32060ac85410468cd61f9ee8667868feb60aca373d25dd8963f5ceb24692",
+    "src/user_source/hdl_source/hdmi1.4b_transmitter_core/hdmi_1_4b_transmitter_core_wrapper.enc.v": "867e0b0bdd874bc383d00918c9e1be3fe01edf41f343b6a0d73e262776596a63",
+    "src/user_source/hdl_source/hdmi_event_audio.v": "9b717b88f3ddfae1c5c21c53ece225362eb2d8e87d03a9b005ccf379a646a2df",
+    "src/user_source/hdl_source/hdmi_pcm_test_tone.v": "a6e11261c300e69914442426a3176285fa38914ba225322b420a9dacbc90ec90",
+    "src/user_source/hdl_source/hdmi_phy_wrapper.v": "34b0780634f4a911e44b2daf9e7b07dc9196c3005f351a33084798d75237c2dd",
+    "src/user_source/hdl_source/held_bus_cdc.v": "9aabfd38b0180f930239f44862037895fecfc6f3520e222090dbc7891b652b72",
+    "src/user_source/hdl_source/image_motion_overlay.v": "1b50fe2f926bddc4dd7ce9099c443c3f6dc54db44361fcf08c3d4d9d37f04895",
+    "src/user_source/hdl_source/include/global_def.v": "d71c81cbc67af935bf6cb9762c0dd6cd25e5a5297e2098f880406e090ac0b446",
+    "src/user_source/hdl_source/include/sdr_as_ram.enc.v": "767dbdfbd83d42223b77dfa7deab42ce8216a8fd6f6cb41b7e7593d9a345ba57",
+    "src/user_source/hdl_source/include/sdr_init_ref.enc.v": "6da5945f4af793610d0d64c65c7e5d2d1c86ed4c11bc5fdeacd27eb03178b9f6",
+    "src/user_source/hdl_source/include/sdr_wrrd.enc.v": "c7d7fe07d75f66aa88d9f986b3006319c995162434f104f9990664b374cdfdd2",
+    "src/user_source/hdl_source/IP/afifo_16_256.tcl": "5807155b00f2f749328339e01a85b4bb836f91598286dd167513836b60af33db",
+    "src/user_source/hdl_source/IP/afifo_16_256.v": "dab43a76a35e21df4064a25edb940699b041427d70bae89cc03c5280b7bf4bf8",
+    "src/user_source/hdl_source/IP/afifo_16_256.vhd": "50d6d10017b63e1ce5a77bad4a80e9a3de81402909d30ca0818674a1887eb46d",
+    "src/user_source/hdl_source/IP/afifo_16_256_sim.v": "55b81ab3aa699902b6f11fe766658b852e0740844879a942dca81cd57b40f729",
+    "src/user_source/hdl_source/IP/afifo_16_32_256.ipc": "9df57c0b914f2f6222f88e356528947224fddb866be2468f1391c26d4e60d371",
+    "src/user_source/hdl_source/IP/afifo_16_32_256.tcl": "5807155b00f2f749328339e01a85b4bb836f91598286dd167513836b60af33db",
+    "src/user_source/hdl_source/IP/afifo_16_32_256.v": "3d29b06655482184a9ad157b9bd71b79032debe3199168d3b4d9570fdac31835",
+    "src/user_source/hdl_source/IP/afifo_32_16_256.ipc": "a74955dc68a02bbfb36780127008c4737ec80e0888a4648e98e6eac9f5d2c349",
+    "src/user_source/hdl_source/IP/afifo_32_16_256.tcl": "5807155b00f2f749328339e01a85b4bb836f91598286dd167513836b60af33db",
+    "src/user_source/hdl_source/IP/afifo_32_16_256.v": "7c3ee41f30be75ae686c9abff3a840fc5439209cda077e4aa275eac0dab9f564",
+    "src/user_source/hdl_source/IP/sdram.ipc": "c3092876d4a66739dfc52cbda4fe84eab75099218f65db7e7d922c41dee1c201",
+    "src/user_source/hdl_source/IP/sdram.v": "1487e8583bbf52fe6d079a2854c10ebff2e569a3872a9088c1c9717ba14d17fe",
+    "src/user_source/hdl_source/IP/sdram.vhd": "853170e99291fb6b2b1bf3f5f20cd1dd0cc723052864147810b674e18cd70705",
+    "src/user_source/hdl_source/IP/sys_pll.ipc": "e0120eac778fee7accca2b55301ca67accc604983729c4c8dd22bf3c09b7ab7e",
+    "src/user_source/hdl_source/IP/sys_pll.v": "98b5c9e0860e1bf61ba96b3356e4735eb12c981d3cf6be6c1cbb7a2cd9668194",
+    "src/user_source/hdl_source/IP/sys_pll.vhd": "4cfdd6d5f5d1d914a7b917654a248f9e9fc21e545e81dd2f227335da00a6c27d",
+    "src/user_source/hdl_source/IP/video_pll.ipc": "d60d0416f64512ec064d28a87be75ca66643f00df7fa8e4643602744090ccaee",
+    "src/user_source/hdl_source/IP/video_pll.v": "bc7f5764c9596c3055f88c6dc072b46136bab73559343c75b8e3382f1280710f",
+    "src/user_source/hdl_source/IP/video_pll.vhd": "4c23a8a81b28c81bed4834e1e9a757db01eebd360c7fe3a7066f8f8f7b6a36c4",
+    "src/user_source/hdl_source/key_remove_shakes.v": "b39f26d58ef3c74d2941117cedb4cec159f03a472453775d21a859ed0423d3a8",
+    "src/user_source/hdl_source/lane_lvds_10_1.v": "a6611f074d42120c8994bc47157bcadf99c5d7898a66b5307f672356e62589e3",
+    "src/user_source/hdl_source/map_navigation.v": "5a20b014f637f58682e69277baaa8c2aec6b0cb06d36d050a78f842e82d71e68",
+    "src/user_source/hdl_source/multiview_layout.v": "fb588d1f78aa8aced37a881b14ca55b8baafce3f2d33efe0f047153aa04a9254",
+    "src/user_source/hdl_source/room_elapsed_store.v": "427b451780eed45c86f5926f8f6f2b4a2aedeebe077f5ee8c7665e445a0a16d2",
+    "src/user_source/hdl_source/room_list_fade.v": "3375bfad52b85e958c35576ca8b64fe0ae51b7cbd5350b35ce4214770c82af47",
+    "src/user_source/hdl_source/room_list_scroll.v": "5e8a3c8af2ffcd51c09ecfac57c890a10b58f8a42d9cbf9d7db130bf4ac01359",
+    "src/user_source/hdl_source/room_notes_font.v": "49c5714f076a183cd7a0387a932638b76cb376d73cf691fc9393a4c48cd3def5",
+    "src/user_source/hdl_source/room_notes_font_id.vh": "5d46a674e0a77c53a6c1d7406ce989891dd64b206d76184822b4e1a82d2ef562",
+    "src/user_source/hdl_source/room_notes_labels.vh": "55e1ba49526b34b06099d76992d29ae39c50f2a0467b0a13124c3366e14e5175",
+    "src/user_source/hdl_source/room_status_ticker.v": "1fd05dc8ad8fbe5a74c74eb77cf06e9c10e98c05b377891712a77351e76ac222",
+    "src/user_source/hdl_source/runtime_site_fields.vh": "6e02b3967c24a2de33999d01c82f8f7f3582bb4a62dfca89cdd8c269a132deae",
+    "src/user_source/hdl_source/scene_motion.v": "04931917d39aa81bf238540d89d26b087d7c735eee5cc00175468851243ea20e",
+    "src/user_source/hdl_source/SD/audio_mix_fifo.v": "1a5654f3ca7bc4c51f368d0cc7cf8e7178bd22eeb3e139366f77667cb2f996d1",
+    "src/user_source/hdl_source/SD/audio_sector_fifo.v": "c64ac7dc0492bf477dcc743963f344bb0b9d9bbaa9836b88dd328e7b9d7a26c7",
+    "src/user_source/hdl_source/SD/ax_debounce.v": "7515c06527f83e3c1b27b74b22d0b34f9eeb457cd1c237a27de7b9dddcd46bf8",
+    "src/user_source/hdl_source/SD/bilinear_span_cache.v": "8e4320ae328d930839c31f714c7068c40ccbc89f4ede8355d64c93223f27aac9",
+    "src/user_source/hdl_source/SD/bmp_dynamic_read.v": "09d02910afde9bc875415cd217f4cecf263bb96ae7b4bf3812a9d197fde3aba0",
+    "src/user_source/hdl_source/SD/bmp_read.v": "efee6308cfcaf71627e472aafdc3d770908ef939962f2118453e78b55db2507c",
+    "src/user_source/hdl_source/SD/fat32_file_reader.v": "94fc65b8f80c6d239e04f79233b7bc04b8be6e4590c5d9e98415880b57028c08",
+    "src/user_source/hdl_source/SD/fat32_named_file.v": "9dae95de047229b6132688aabf717ca7385b00d079a0afd72434c7fbd0e1158c",
+    "src/user_source/hdl_source/SD/frame_fifo_read.v": "4e3bcfed40df25549aa3350c731b8cde46436d7e324c03a440e3ce0402fcce7a",
+    "src/user_source/hdl_source/SD/frame_fifo_write.v": "a7b48813b3628f0c7090c39887d8301de9e03f16e3d5cfb35cc9b511d50470bf",
+    "src/user_source/hdl_source/SD/frame_read_write.v": "aa928a1fb051da8bc532383064cea866faf74ab973a8d491917cd9384175fb85",
+    "src/user_source/hdl_source/SD/image_switch_scheduler.v": "36643ecbc930ef0ea0804a83189f797446346485d11527ef47745d93442909ef",
+    "src/user_source/hdl_source/SD/resident_image_scheduler.v": "e1eedb6a30b86734ec11a7e9e54f4af74bee00e57003bc6c61e91b14f83b9644",
+    "src/user_source/hdl_source/SD/scene_frame_reader.v": "6ba377298544cd0023d7104bea97dceb34fb347e209f5f50671ea6fbbcfe7b44",
+    "src/user_source/hdl_source/SD/sd_card_bmp.v": "0d4bdcd1bba5a030ef4679b3e0184b7ac879aa146c3898ff9f62233ad48eb2f0",
+    "src/user_source/hdl_source/SD/sd_card_cmd.v": "91cd1306ed87a2f2231d2a3a527902417baa32048abdee59df2d7e4ff68f03b9",
+    "src/user_source/hdl_source/SD/sd_card_sec_read_write.v": "02576bbebd77aaefd75e557ddfb6e738fc739dc10f01b4518f9a824087d0de2c",
+    "src/user_source/hdl_source/SD/sd_card_top.v": "9ee254abb84c983352750b904f28d5a1193744b81fbc533baff74241b32529ca",
+    "src/user_source/hdl_source/SD/sd_dual_audio.v": "595483b4765389f6ae2491e67610826efe775a2522efa28524d689f1702cb215",
+    "src/user_source/hdl_source/SD/sd_site_assets.v": "ea6cb70687278f97764a259e91c96aaa0df0a91ab94f8ec399fc7a7b49f709d0",
+    "src/user_source/hdl_source/SD/sd_wav_player.v": "6c3360f59a3964f90686c3404bcea044622f1a87b83ede47fa96bad176542cfb",
+    "src/user_source/hdl_source/SD/sdram.v": "fd9fe2a84b1ff7b58a5107fda1eaaf63bc150ed9e37310bf8028331c5f0898ce",
+    "src/user_source/hdl_source/SD/sdram_refresh_guard.v": "887ac3f5d3a9bc875987b3a01e25c20281237caf25cb820800461b45f6cbf37a",
+    "src/user_source/hdl_source/SD/seg_decoder.v": "62a2664be7db6d0dace31fc97a8faef0c43f44b639b1d5a6a2c49773812a3b5e",
+    "src/user_source/hdl_source/SD/seg_scan.v": "c61d6b6808e06dd0edc6db2d8f214426a1fb96d546556ecd1f74ea9ca6889f52",
+    "src/user_source/hdl_source/SD/shared_fat32_reader.v": "6457b04471953264ca1540259d35c8939f692fa214a246c2d040ab9f61218934",
+    "src/user_source/hdl_source/SD/spi_master.v": "5bf25331fbac198266a8e7d8fb8bf0f99137f37b1bee2756378cbc84170c51f7",
+    "src/user_source/hdl_source/SD/video_define.v": "aef3d127950b3b51915444edbef0e0c3f536bc1bf0bf093d96406ad6d5e440cf",
+    "src/user_source/hdl_source/SD/video_delay.v": "05393a2d4a986f5a858d17ebbdcdf8ecbed01a4fb5ef9effd27ff9afd9bdcc70",
+    "src/user_source/hdl_source/SD/video_sync_generator.v": "4d004bc79e1cd8af2cd8f675dfe851692cfc2687813748484cd5acaf9ea59b9b",
+    "src/user_source/hdl_source/SD/video_timing_data.v": "c6530bc72c42c958d8591ee343c856fcb13133064b9605d24139c06d46ce342c",
+    "src/user_source/hdl_source/settings_font_init.vh": "414d7fb25ec976f6ac2567655805c534839d658847ed046becb52caae7123b2a",
+    "src/user_source/hdl_source/site_font_id.vh": "a74a72d5a1832be531f1fccc9f38bd5ab276d08c0fe484a63ea8acaa7648b624",
+    "src/user_source/hdl_source/site_point_memory.v": "add934ba9257b36365cd4a8951071bd31a55d7a4d7fcd9c6d252dbf4f05ec1e2",
+    "src/user_source/hdl_source/site_runtime_wiring.vh": "8a4661164304f6354577e04bbf3ad3a124b759ba5c035a21f61d552521ba2f9c",
+    "src/user_source/hdl_source/site_scene_broker.v": "deabcfd1533fd7024be010f8c6e00ba35ff89c4d24e66f644ea362f76df89e30",
+    "src/user_source/hdl_source/startup_pulse.v": "d07724f9daf0b2bc0ee4e73127cfe2224667afeca37b837519cf2228412367bb",
+    "src/user_source/hdl_source/top_tf_hdmi_audio.v": "9e8c448fe49863b5134ac6dfb624b646b25c04119a1eb9b06701c394d1e26437",
+    "src/user_source/hdl_source/ui_operation_events.v": "4f1aecd97bed347b60297e1faae416cd219cba7f111d0a65eedce2057882bde7",
+    "src/user_source/hdl_source/ui_settings_overlay.v": "93d4a99d0195aecf2bb17c75b3de709c822e1097ec444d98d3ca02341331f2e8",
+    "src/user_source/hdl_source/ui_text_request.vh": "9750de8e5b81f5e2590800f872441e394f184b5bbc483b8a9269704df075c31e",
+    "src/user_source/hdl_source/ui_viewport_800.v": "635e9cdd76de23ab33e9d29c3441fed1aa72e0edaa7b08f383d1bd710b6a1e34",
+    "src/user_source/hdl_source/video_rgb_to_axis.v": "c9d170b2e737ddf5dcd3506778dc17407077016bcce41dec0d2f056aaeebdf5e",
+    "src/user_source/hdl_source/video_source_test.v": "86c6cf8ae978cb937466927bd39c0926976de40d0f568f7d70467f6d924af749",
+    "src/user_source/ip_source/pll.ipc": "5d632bad332785258c35ca41ce2b4a2a550e6bfd75be0b63a3f72403ca2ce11e",
+    "src/user_source/ip_source/pll.v": "202799f886f12cfc1d837afa932328b636c6c3dee70167be68c084133647b39c",
+    "src/user_source/ip_source/pll.vhd": "a8166865b5aef9caaee525d4633aa1dec4172244a7bbff239e0d658c0ca775e4"
+  },
+  "build_record": "release/manifest.json",
+  "board_record": "release/board_verification.json",
+  "reproduction_entry": "tools/reproduce.py",
+  "external_dependencies": [
+    "HX4S20C development board",
+    "HDMI display/audio device",
+    "FAT32 TF card and reader",
+    "USB-JTAG driver and Anlogic download tool",
+    "TD 6.2.168116 for source builds",
+    "Python packages and system fonts for content editing",
+    "ModelSim/Questa only for HDL simulation"
+  ]
+}

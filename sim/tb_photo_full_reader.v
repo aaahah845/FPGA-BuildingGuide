@@ -56,7 +56,7 @@ function [7:0] channel_blend;
 endfunction
 
 scene_frame_reader #(.DYNAMIC_GEOMETRY(1),.SCATTERED_SLOTS(1),.BILINEAR_SUPPORT(1),.CROSSFADE_SUPPORT(1)) dut(
- .bilinear_enabled(bilinear),.scene_motion(13'd0),
+ .carousel_native(1'b0),.bilinear_enabled(bilinear),.scene_motion(13'd0),
  .map_view({14'd4096,12'd640,11'd480}),
  .slot_tails(18'd0),.slot_widths({6{11'd640}}),
  .slot_strides({6{11'd640}}),.slot_heights({6{10'd480}}),

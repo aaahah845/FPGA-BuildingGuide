@@ -1,0 +1,371 @@
+--- previous/src/user_source/hdl_source/audio_spectrum_overlay.v
++++ src/user_source/hdl_source/audio_spectrum_overlay.v
+@@ -7,6 +7,7 @@
+ //         每帧取一次 audio_spectrum_engine 的结果，下降时每帧最多降 1 像素。
+ module audio_spectrum_overlay(
+     input clk,rst,enabled,
++    input native_index,
+     input [7:0] panel_height,
+     input pcm_valid,
+     input signed [23:0] pcm_left,
+@@ -115,7 +116,7 @@
+         rgb1<=in_rgb;
+         vs1<=in_vs;
+         de1<=in_de;
+-        inside1<=enabled_frame && in_de && x>=528 && x<784 && y>=540 && y<564 && heights_valid && !smooth_busy && x[1:0]!=3;
++        inside1<=enabled_frame && in_de && x>=528 && x<784 && y>=540 && y<564 && (!native_index || y>=548) && heights_valid && !smooth_busy && x[1:0]!=3;
+         local_y1<=y-10'd540;
+         alpha1<=alpha_frame;
+         height1<=height_read;
+--- previous/src/user_source/hdl_source/guide_scene_compositor.v
++++ src/user_source/hdl_source/guide_scene_compositor.v
+@@ -40,6 +40,7 @@
+ )(
+     input wire I_clk, I_rst,
+     input wire I_carousel_native,
++    input wire [4:0] I_layout_alpha,
+     input [12:0] I_scene_motion,
+     input cfg_we,
+     input [12:0] cfg_addr,
+@@ -183,18 +184,15 @@
+ wire [5:0] status_selected_phase;
+ reg [7:0] status_sample;
+ wire [9:0] bar_end=10'd304+{1'b0,progress_f[12:4]};
+-// Bit-plane constants expose a small LUT truth table without a decoded case mux.
+-localparam [63:0] NATIVE_BAR_B0=64'h0924924924924924;
+-localparam [63:0] NATIVE_BAR_B1=64'h0492492492492492;
+-localparam [63:0] NATIVE_BAR_B2=64'h0924924924924924;
+-localparam [63:0] NATIVE_BAR_B3=64'h0492492492492492;
+-localparam [63:0] NATIVE_BAR_B4=64'hf6db6db6db6db6db;
+-localparam [63:0] NATIVE_BAR_B5=64'h071c71c71c71c71c;
+-localparam [63:0] NATIVE_BAR_B6=64'hf81f81f81f81f81f;
+-localparam [63:0] NATIVE_BAR_B7=64'hffe001ffe001ffe0;
+-localparam [63:0] NATIVE_BAR_B8=64'h000001fffffe0000;
+-localparam [63:0] NATIVE_BAR_B9=64'hfffffe0000000000;
+-wire [9:0] native_bar_end={NATIVE_BAR_B9[progress_f[12:7]],NATIVE_BAR_B8[progress_f[12:7]],NATIVE_BAR_B7[progress_f[12:7]],NATIVE_BAR_B6[progress_f[12:7]],NATIVE_BAR_B5[progress_f[12:7]],NATIVE_BAR_B4[progress_f[12:7]],NATIVE_BAR_B3[progress_f[12:7]],NATIVE_BAR_B2[progress_f[12:7]],NATIVE_BAR_B1[progress_f[12:7]],NATIVE_BAR_B0[progress_f[12:7]]};
++// For every 9-bit p, floor(p*683/512) equals floor(4*p/3).
++// Use the one spare DSP for the exact native progress scale and base offset.
++// Its frame-enabled output is held throughout active scanout.
++(* dsp_style="yes" *) wire [18:0] native_bar_product=I_carousel_progress[12:4]*10'd683;
++wire [18:0] native_bar_scaled=native_bar_product+19'd40960;
++reg [9:0] native_bar_end;
++always @(posedge I_clk)
++    if(frame_edge) native_bar_end<=native_bar_scaled[18:9];
++wire native_index=I_carousel_native && !I_map_mode;
+ reg [23:0] bar_edge_color;
+ 
+ wire [7:0] panel_height=I_panel_height;
+@@ -220,7 +218,8 @@
+ (* syn_ramstyle="block_ram" *) reg [6:0] runtime_names[0:511];
+ reg [6:0] name_read_q;
+ reg glyph_from_name;
+-reg [8:0] name_addr;
++reg [8:0] name_base_addr;
++wire [8:0] name_addr;
+ reg name_sel_q;
+ reg [8:0] name_addr_q;
+ reg [12:0] glyph_q;
+@@ -407,8 +406,10 @@
+ wire [4:0] dim_alpha=I_panel_height>=208?8:I_panel_height>=182?9:I_panel_height>=156?10:I_panel_height>=130?11:I_panel_height>=104?12:I_panel_height>=78?13:I_panel_height>=52?14:I_panel_height>=26?15:16;
+ 
+ reg large_text,large_d,large_q2;
+-reg [4:0] large_x,large_y,large_x_d,large_y_d,large_x_q2;
+-reg [2:0] large_col;
++wire [4:0] large_x;
++reg [4:0] large_y,large_x_d,large_y_d,large_x_q2;
++reg [8:0] large_offset_x;
++wire [2:0] large_col;
+ wire [23:0] large_pixels;
+ guide_large_font large_font(
+     .clk(I_clk),
+@@ -426,6 +427,11 @@
+         font24_col=x>=168?7:x>=144?6:x>=120?5:x>=96?4:x>=72?3:x>=48?2:x>=24?1:0;
+     end
+ endfunction
++// All 24-pixel text regions share one column/within-character decoder.
++// The region priority tree selects only the local offset and name base.
++assign large_col=font24_col(large_offset_x);
++assign large_x=large_offset_x-large_col*24;
++assign name_addr=name_base_addr+large_col;
+ function dot_pixel;
+     input [9:0] x,y,cx,cy;
+     input outer;
+@@ -449,6 +455,7 @@
+         fade_channel=$signed({1'b0,b})+(product>>>4);
+     end
+ endfunction
++wire layout_fade_pixel=!I_layout_alpha[4] && pixel_y>=48 && physical_y_pre<568 && !I_map_mode;
+ wire list_fade_pixel=!I_carousel_native && !I_map_mode && !photo_full_pre && !panel_hit_pre && view_valid_pre && pixel_x<304 && pixel_y>=56 && pixel_y<528;
+ 
+ guide_font_rom font(
+@@ -585,14 +592,13 @@
+ always @* begin
+     floor_top=0;
+     large_text=0;
+-    large_x=0;
+     large_y=0;
+-    large_col=0;
++    large_offset_x=0;
+     notes_select=0;
+     notes_literal=0;
+     notes_addr=0;
+     notes_label=0;
+-    name_addr=0;
++    name_base_addr=0;
+     glyph_from_name=0;
+     base_color=24'hf8f7f5;
+     text_ink=INK_DARK;
+@@ -676,10 +682,9 @@
+                 text_enable=1;
+                 glyph_from_name=RUNTIME_CONFIG;
+                 large_text=RUNTIME_CONFIG;
+-                large_col=font24_col(local_x-14);
+-                large_x=local_x-14-large_col*24;
++                large_offset_x=local_x-14;
+                 large_y=local_y-8;
+-                name_addr=(room_id<<3)+large_col;
++                name_base_addr=(room_id<<3);
+                 glyph=request_room(name_addr);
+                 glyph_x=room_x+14;
+                 glyph_y=local_y-8;
+@@ -741,10 +746,9 @@
+                 text_enable=1;
+                 large_text=1;
+                 glyph_from_name=1;
+-                large_col=font24_col(pixel_x-320);
+-                large_x=pixel_x-320-large_col*24;
++                large_offset_x=pixel_x-320;
+                 large_y=pixel_y-478;
+-                name_addr=(selected_number<<3)+large_col;
++                name_base_addr=(selected_number<<3);
+             end
+             if(pixel_x>=528 && pixel_x<560 && pixel_y>=454 && pixel_y<470) begin
+                 status_sample=pixel_x-528+{2'd0,status_selected_phase};
+@@ -813,10 +817,9 @@
+                         text_enable=1;
+                         large_text=1;
+                         glyph_from_name=1;
+-                        large_col=font24_col(pixel_x-672);
+-                        large_x=pixel_x-672-large_col*24;
++                        large_offset_x=pixel_x-672;
+                         large_y=pixel_y-floor_top-16;
+-                        name_addr=240+floor_row*8+large_col;
++                        name_base_addr=240+floor_row*8;
+                     end
+                 end
+             end
+@@ -848,10 +851,9 @@
+                 text_enable=1;
+                 large_text=1;
+                 glyph_from_name=1;
+-                large_col=font24_col(pixel_x-668);
+-                large_x=pixel_x-668-large_col*24;
++                large_offset_x=pixel_x-668;
+                 large_y=pixel_y>=406?pixel_y-406:pixel_y-378;
+-                name_addr=(selected_number<<3)+large_col+(pixel_y>=406?4:0);
++                name_base_addr=(selected_number<<3)+(pixel_y>=406?4:0);
+             end
+             if(pixel_x>=668 && pixel_x<716 && pixel_y>=438 && pixel_y<454) begin
+                 text_enable=1;
+@@ -886,40 +888,6 @@
+                     text_ink=INK_AMBER;
+                 end
+             end
+-        end
+-    end
+-    // Header has 12px top/bottom breathing room and a centered floor name.
+-    if(pixel_y<48) begin
+-        base_color=24'hf9f8f6;
+-        text_enable=0;
+-        large_text=0;
+-        notes_select=0;
+-        if(pixel_y==47) base_color=24'he0e1de;
+-        if(pixel_x>=16 && pixel_x<208 && pixel_y>=12 && pixel_y<36) begin
+-            text_enable=1;
+-            large_text=1;
+-            glyph_from_name=RUNTIME_CONFIG && runtime_title_valid;
+-            large_col=font24_col(pixel_x-16);
+-            large_x=pixel_x-16-large_col*24;
+-            large_y=pixel_y-12;
+-            name_addr=9'd264+{6'd0,large_col};
+-            glyph=request_ui(large_col);
+-        end
+-        if(pixel_x>=376 && pixel_x<496 && pixel_y>=12 && pixel_y<36) begin
+-            text_enable=1;
+-            large_text=1;
+-            glyph_from_name=1;
+-            large_col=font24_col(pixel_x-376);
+-            large_x=pixel_x-376-large_col*24;
+-            large_y=pixel_y-12;
+-            name_addr=240+((I_map_mode?floor_f:list_floor)<<3)+large_col;
+-        end
+-        if(pixel_x>=704 && pixel_x<768 && pixel_y>=16 && pixel_y<32) begin
+-            text_enable=1;
+-            glyph_from_name=0;
+-            glyph=I_map_mode?request_map((pixel_x-704)>>4):request_ui(48+((pixel_x-704)>>4));
+-            glyph_x=704;
+-            glyph_y=pixel_y-16;
+         end
+     end
+     // One embedded status strip; audio draws only the trace in its right end.
+@@ -967,10 +935,9 @@
+             text_enable=1;
+             large_text=1;
+             glyph_from_name=1;
+-            large_col=font24_col(pixel_x-52);
+-            large_x=pixel_x-52-large_col*24;
++            large_offset_x=pixel_x-52;
+             large_y=pixel_y-86;
+-            name_addr=(selected_number<<3)+large_col;
++            name_base_addr=(selected_number<<3);
+         end
+         if(pixel_x>=724 && pixel_x<756 && pixel_y>=90 && pixel_y<106) begin
+             text_enable=1;
+@@ -1044,12 +1011,12 @@
+         end
+     end
+     // Reuse the native-photo pixel path; hide list text outside its rectangle.
+-    if(I_carousel_native && !I_map_mode) begin
++    if(native_index) begin
+         base_color=24'hf8f7f5;
+         text_enable=0;
+         large_text=0;
+         notes_select=0;
+-        if(pixel_x>=80 && pixel_x<720 && pixel_y>=564 && pixel_y<568)
++        if(pixel_x>=80 && pixel_x<720 && pixel_y>=540 && pixel_y<546)
+             base_color=pixel_x<native_bar_end?24'h3477b3:pixel_x==native_bar_end?bar_edge_color:24'he2e3e0;
+     end
+     if(photo_full_pre) begin
+@@ -1058,6 +1025,38 @@
+         large_text=0;
+         notes_select=0;
+         glyph_from_name=0;
++    end
++    // Header has 12px top/bottom breathing room and a centered floor name.
++    if(pixel_y<48) begin
++        base_color=24'hf9f8f6;
++        text_enable=0;
++        large_text=0;
++        notes_select=0;
++        if(pixel_y==47) base_color=24'he0e1de;
++        if(pixel_x>=16 && pixel_x<208 && pixel_y>=12 && pixel_y<36) begin
++            text_enable=1;
++            large_text=1;
++            glyph_from_name=RUNTIME_CONFIG && runtime_title_valid;
++            large_offset_x=pixel_x-16;
++            large_y=pixel_y-12;
++            name_base_addr=9'd264;
++            glyph=request_ui(large_col);
++        end
++        if(pixel_x>=376 && pixel_x<496 && pixel_y>=12 && pixel_y<36) begin
++            text_enable=1;
++            large_text=1;
++            glyph_from_name=1;
++            large_offset_x=pixel_x-376;
++            large_y=pixel_y-12;
++            name_base_addr=240+((I_map_mode?floor_f:list_floor)<<3);
++        end
++        if(pixel_x>=704 && pixel_x<768 && pixel_y>=16 && pixel_y<32) begin
++            text_enable=1;
++            glyph_from_name=0;
++            glyph=I_map_mode?request_map((pixel_x-704)>>4):request_ui(48+((pixel_x-704)>>4));
++            glyph_x=704;
++            glyph_y=pixel_y-16;
++        end
+     end
+     if(!view_valid_pre) begin
+         base_color=24'hf8f7f5;
+@@ -1196,7 +1195,7 @@
+         dim_q2<=dim_d;
+         // Reuse the existing blend for detail -> native photo. The retained
+         // detail panel is fully open, so its outside dim is exactly one half.
+-        fade_d<=photo_mix_pre ? 5'd16-I_photo_view_alpha :
++        fade_d<=layout_fade_pixel ? I_layout_alpha : photo_mix_pre ? 5'd16-I_photo_view_alpha :
+             (dim_background?dim_alpha:(list_fade_pixel?list_opacity:5'd16));
+         fade_q2<=fade_d;
+         name_sel_q<=glyph_from_name;
+--- previous/src/user_source/hdl_source/site_scene_broker.v
++++ src/user_source/hdl_source/site_scene_broker.v
+@@ -35,6 +35,7 @@
+     input clk,rst,site_ready,background_ready,frame_request,
+     input carousel_native_requested,
+     output reg carousel_native,
++    output reg [4:0] layout_alpha,
+     output [12:0] scene_motion,
+     output wire transition_busy,
+     input [36:0] requested_view,
+@@ -102,13 +103,10 @@
+ reg [4:0] motion_frame;
+ reg motion_rewind;
+ `include "eased_motion_table.vh"
+-assign transition_busy=motion_state!=0;
+-assign scene_motion={motion_vertical,motion_negative,transition_busy,motion_distance};
+-// Change viewport only at a frame boundary, outside a slide or panel.
+-always @(posedge clk or posedge rst)
+-    if(rst) carousel_native<=0;
+-    else if(frame_request && !frame_d && !transition_busy && !slide_anim && panel_height==0 && !detail_requested)
+-        carousel_native<=carousel_native_requested;
++reg layout_fading_out;
++wire layout_busy=layout_fading_out || !layout_alpha[4];
++assign transition_busy=motion_state!=0 || layout_busy;
++assign scene_motion={motion_vertical,motion_negative,(motion_state!=0),motion_distance};
+ reg frame_d,outstanding,failed,cancel_issued;
+ reg queued_next;
+ reg animation_photo_pending,animation_prefetch;
+@@ -222,6 +220,22 @@
+ wire carousel_wait=!ready || (!map_requested && wanted_primary!=committed_key[21:15]);
+ wire auto_due=!photo_pause && !map_requested && !transition_busy && !loading && !timeline_busy && auto_play_en && auto_count>=interval-1;
+ wire advance_slide=!photo_pause && !slide_anim && !map_requested && (next_pulse || queued_next || auto_due);
++// Only change layout while its content is invisible. Old/new geometry and
++// reader descriptor still change together at the normal frame boundary.
++always @(posedge clk or posedge rst) begin
++    if(rst) begin carousel_native<=0;layout_alpha<=16;layout_fading_out<=0;end
++    else if(frame_request && !frame_d) begin
++        if(layout_fading_out) begin
++            if(layout_alpha!=0) layout_alpha<=layout_alpha-1'b1;
++            else begin carousel_native<=carousel_native_requested;layout_fading_out<=0;end
++        end else if(!layout_alpha[4]) layout_alpha<=layout_alpha+1'b1;
++        else if(ready && !map_mode && !map_requested && motion_state==0 && !slide_anim &&
++                panel_height==0 && !detail_requested && !outstanding && !advance_slide &&
++                wanted_key==committed_key && carousel_native!=carousel_native_requested)
++            layout_fading_out<=1;
++    end
++end
++
+ carousel_timeline #(
+     .CLK_FREQ_HZ(CLK_FREQ_HZ)
+ ) timeline(
+--- previous/src/user_source/hdl_source/top_tf_hdmi_audio.v
++++ src/user_source/hdl_source/top_tf_hdmi_audio.v
+@@ -332,6 +332,7 @@
+     end
+ wire bilinear_enabled;
+ wire carousel_native_requested,carousel_native;
++wire [4:0] layout_alpha;
+ wire settings_open,spectrum_enabled,music_enabled;
+ wire [1:0] settings_field;
+ wire selection_visible;
+@@ -463,6 +464,7 @@
+ ) u_scene_broker(
+     .carousel_native_requested(carousel_native_requested),
+     .carousel_native(carousel_native),
++    .layout_alpha(layout_alpha),
+     .map_entry_pending(map_entry_pending),
+     .map_loading(map_loading),
+     .cached_maps(cached_maps_video),
+@@ -765,6 +767,7 @@
+     .RUNTIME_CONFIG(1)
+ ) u_guide_scene_compositor (
+     .I_carousel_native(carousel_native),
++    .I_layout_alpha(layout_alpha),
+     .font_write_clk(sd_card_clk),
+     .font_write_en(font_write_en),
+     .font_write_addr(font_write_addr),
+@@ -934,6 +937,7 @@
+ wire waveform_vs,waveform_de;
+ wire [23:0] waveform_rgb;
+ audio_spectrum_overlay u_spectrum_overlay(
++    .native_index(carousel_native && !scene_map),
+     .clk(video_clk),
+     .rst(rst_video_overlays),
+     .enabled(spectrum_enabled),

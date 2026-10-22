@@ -69,12 +69,16 @@
     "ROOM309.BMP",
     "POINT309.BMP",
     "ROOM310.BMP",
-    "POINT310.BMP"
+    "POINT310.BMP",
+    "SLIDE04.BMP",
+    "SLIDE05.BMP"
   ],
   "slideshow": [
     40,
     41,
-    42
+    42,
+    69,
+    70
   ],
   "period_select": 0,
   "show_points": true,

@@ -1,34 +1,514 @@
 {
-  "date": "2026-10-16",
-  "base_project": "D:\\BaiduNetdiskDownload\\HX4S20_Contest_202606\\newp\\lab_image_photo_overlay_20261015",
-  "project": "D:\\BaiduNetdiskDownload\\HX4S20_Contest_202606\\newp\\lab_image_cache_tailfix_20261016\\src\\td_project\\image_multiview_gui.al",
-  "physical_run": "phy_seed61",
-  "candidate": "image_nav_cache_tailfix_seed61_untested.bit",
-  "candidate_sha256": "08170d73721e6962a7bc4e840f9ea6f090a0e8bea38980df77d1637189e0d134",
-  "board_test": "passed_user_reported",
-  "modified_sources": [
-    "src/user_source/hdl_source/SD/sd_site_assets.v"
-  ],
-  "source_manifest": {
+  "bitstream": "image_nav_carousel_native_fade_seed61_untested.bit",
+  "sha256": "63cfab5edafaae21b367bdb2b8ea914b16db0f3ea2bb35ab22850d07ceb68140",
+  "resources": {
+    "lut": 19173,
+    "reg": 11377,
+    "bram9k": 64,
+    "dsp": 29,
+    "mslice": 4887
+  },
+  "timing": {
+    "setup_wns_ns": -5.565,
+    "setup_tns_ns": -204.589,
+    "min_wns_ns": -0.02,
+    "min_tns_ns": -0.058,
+    "groups": [
+      {
+        "group": "video_clk -> video_clk",
+        "Max": {
+          "wns_ns": 0.111,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": -0.02,
+          "tns_ns": -0.04,
+          "negative_endpoints": 4
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "sd_card_clk -> sd_card_clk",
+        "Max": {
+          "wns_ns": 3.459,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": -0.008,
+          "tns_ns": -0.018,
+          "negative_endpoints": 3
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "ext_mem_clk -> ext_mem_clk",
+        "Max": {
+          "wns_ns": -0.105,
+          "tns_ns": -0.21,
+          "negative_endpoints": 2
+        },
+        "Min": {
+          "wns_ns": 0.011,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "clk -> clk",
+        "Max": {
+          "wns_ns": 8.447,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 0.173,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "hdmi_5x_clk -> hdmi_5x_clk",
+        "Max": {
+          "wns_ns": 0.943,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 0.337,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "video_clk -> hdmi_5x_clk",
+        "Max": {
+          "wns_ns": 3.508,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 0.253,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "sd_card_clk -> video_clk",
+        "Max": {
+          "wns_ns": 3.714,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 0.244,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "video_clk -> sd_card_clk",
+        "Max": {
+          "wns_ns": 2.999,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 0.253,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "sd_card_clk -> ext_mem_clk",
+        "Max": {
+          "wns_ns": 6.14,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 0.479,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "clk -> ext_mem_clk",
+        "Max": {
+          "wns_ns": 6.941,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 1.791,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "clk -> hdmi_5x_clk",
+        "Max": {
+          "wns_ns": 1.892,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 1.806,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "clk -> sd_card_clk",
+        "Max": {
+          "wns_ns": 16.598,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 1.783,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "clk -> video_clk",
+        "Max": {
+          "wns_ns": 1.941,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 1.73,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "hdmi_5x_clk -> video_clk",
+        "Max": {
+          "wns_ns": 1.317,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 2.657,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
+        "Max": {
+          "wns_ns": -1.688,
+          "tns_ns": -26.299,
+          "negative_endpoints": 32
+        },
+        "Min": {
+          "wns_ns": 4.874,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": true
+      },
+      {
+        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
+        "Max": {
+          "wns_ns": -5.565,
+          "tns_ns": -178.08,
+          "negative_endpoints": 32
+        },
+        "Min": {
+          "wns_ns": 9.43,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": true
+      },
+      {
+        "group": "",
+        "Max": {
+          "wns_ns": 8.425,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 0.0,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      },
+      {
+        "group": "",
+        "Max": {
+          "wns_ns": 8.546,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "Min": {
+          "wns_ns": 0.0,
+          "tns_ns": 0.0,
+          "negative_endpoints": 0
+        },
+        "sdram_interface": false
+      }
+    ],
+    "negative_paths_reported": [
+      {
+        "group": "video_clk -> video_clk",
+        "slack_ns": -0.02,
+        "begin": "u_scene_broker/next_room_id[1]_syn_4.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
+        "end": "u_guide_scene_compositor/marker_points/ramread0_syn_6.dia[6] (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
+        "type": "hold"
+      },
+      {
+        "group": "video_clk -> video_clk",
+        "slack_ns": -0.012,
+        "begin": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u_video_axi_stream_receiver/u_w24_d1024_fifo/u_logic_ramfifo[6]__1_syn_4.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
+        "end": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u_video_axi_stream_receiver/u_w24_d1024_fifo/u_logic_ramfifo_syn_400.addrb[3] (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
+        "type": "hold"
+      },
+      {
+        "group": "video_clk -> video_clk",
+        "slack_ns": -0.005,
+        "begin": "u_guide_scene_compositor/marker_points/point_hi0_reg[8]_syn_9.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
+        "end": "u_guide_scene_compositor/marker_points/read_q_b[18]_syn_52.sr (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
+        "type": "removal"
+      },
+      {
+        "group": "video_clk -> video_clk",
+        "slack_ns": -0.003,
+        "begin": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u_video_axi_stream_receiver/u_w24_d1024_fifo/u_logic_ramfifo[4]__4_syn_4.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
+        "end": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u_video_axi_stream_receiver/u_w24_d1024_fifo/u_logic_ramfifo_syn_380.addra[10] (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
+        "type": "hold"
+      },
+      {
+        "group": "sd_card_clk -> sd_card_clk",
+        "slack_ns": -0.008,
+        "begin": "u_site_assets/g_audio$fs/fs/current_cluster_reg[30]_syn_4.clk (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
+        "end": "u_site_assets/g_audio$fs/fs/ramread0_syn_309.b[1] (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
+        "type": "hold"
+      },
+      {
+        "group": "sd_card_clk -> sd_card_clk",
+        "slack_ns": -0.005,
+        "begin": "frame_read_write_m0/write_buf/asy_w_rst1_reg_syn_5.clk (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
+        "end": "frame_read_write_m0/write_buf/rd_to_wr_cross_inst/sync_r1_reg[6]_syn_4.sr (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
+        "type": "removal"
+      },
+      {
+        "group": "sd_card_clk -> sd_card_clk",
+        "slack_ns": -0.005,
+        "begin": "frame_read_write_m0/write_buf/asy_w_rst1_reg_syn_5.clk (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
+        "end": "frame_read_write_m0/write_buf/wr_to_rd_cross_inst/primary_addr_gray_reg_reg[6]_syn_4.sr (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
+        "type": "removal"
+      },
+      {
+        "group": "ext_mem_clk -> ext_mem_clk",
+        "slack_ns": -0.105,
+        "begin": "U3/u2_ram/u1_init_ref/init_vld_reg_syn_10.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "frame_read_write_m0/u_scene_reader/map_data_ready_n_syn_69.ce (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "ext_mem_clk -> ext_mem_clk",
+        "slack_ns": -0.105,
+        "begin": "U3/u2_ram/u1_init_ref/init_vld_reg_syn_10.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "frame_read_write_m0/u_scene_reader/map_emit_reg[10]_syn_4.ce (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
+        "slack_ns": -1.688,
+        "begin": "frame_read_write_m0/u_scene_reader/y56_reg[3]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "U3/sdram.dq[14] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
+        "slack_ns": -1.688,
+        "begin": "frame_read_write_m0/u_scene_reader/y56_reg[3]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "U3/sdram.dq[15] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
+        "slack_ns": -1.536,
+        "begin": "frame_read_write_m0/u_scene_reader/y56_reg[3]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "U3/sdram.dq[12] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
+        "slack_ns": -1.536,
+        "begin": "frame_read_write_m0/u_scene_reader/y56_reg[3]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "U3/sdram.dq[13] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
+        "slack_ns": -1.243,
+        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_19.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "U3/sdram.dq[10] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
+        "slack_ns": -1.243,
+        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_19.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "U3/sdram.dq[11] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
+        "slack_ns": -1.239,
+        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_19.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "U3/sdram.dq[8] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
+        "slack_ns": -1.239,
+        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_19.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "U3/sdram.dq[9] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
+        "slack_ns": -0.983,
+        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_21.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "U3/sdram.dq[17] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
+        "slack_ns": -0.983,
+        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_21.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "end": "U3/sdram.dq[16] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
+        "slack_ns": -5.565,
+        "begin": "U3/sdram.dq[0] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "end": "U3/sdram_syn_1.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
+        "slack_ns": -5.565,
+        "begin": "U3/sdram.dq[6] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "end": "U3/sdram_syn_2.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
+        "slack_ns": -5.565,
+        "begin": "U3/sdram.dq[7] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "end": "U3/sdram_syn_3.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
+        "slack_ns": -5.565,
+        "begin": "U3/sdram.dq[1] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "end": "U3/sdram_syn_7.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
+        "slack_ns": -5.565,
+        "begin": "U3/sdram.dq[23] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "end": "U3/sdram_syn_18.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
+        "slack_ns": -5.565,
+        "begin": "U3/sdram.dq[22] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "end": "U3/sdram_syn_19.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
+        "slack_ns": -5.565,
+        "begin": "U3/sdram.dq[21] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "end": "U3/sdram_syn_20.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
+        "slack_ns": -5.565,
+        "begin": "U3/sdram.dq[20] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "end": "U3/sdram_syn_21.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
+        "slack_ns": -5.565,
+        "begin": "U3/sdram.dq[19] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "end": "U3/sdram_syn_22.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      },
+      {
+        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
+        "slack_ns": -5.565,
+        "begin": "U3/sdram.dq[18] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
+        "end": "U3/sdram_syn_23.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
+        "type": "setup"
+      }
+    ],
+    "max_negative_endpoints": 66,
+    "min_negative_endpoints": 7,
+    "sdram_max_negative_endpoints": 64,
+    "other_max_negative_endpoints": 2,
+    "min_types_reported": {
+      "hold": {
+        "negative_endpoints_reported": 4,
+        "worst_slack_ns": -0.02
+      },
+      "removal": {
+        "negative_endpoints_reported": 3,
+        "worst_slack_ns": -0.005
+      }
+    },
+    "min_type_breakdown_complete": true,
+    "report_limit_note": "Detailed paths are limited by the report scheme; group endpoint statistics remain authoritative."
+  },
+  "source_sha256": {
     "src/user_source/constraints_source/pin.adc": "4c39694cd5f03b813d370552f3bc6ae55ac49d47d7441651a8fa26503306d0b5",
     "src/user_source/constraints_source/timing.sdc": "be868e0f70f1fb0331c1f1b7bef57c50e843ceaa903d36c71e259d1dca8eff37",
     "src/user_source/hdl_source/audio_event_mailbox.v": "38dff18767548a7f830fa3db1eedfc71b1b42f0d7dcb549ad6b36fb6ffddb043",
     "src/user_source/hdl_source/audio_output_mixer.v": "283f9217b65622eb98441ab5cc98abb04d45432d8f548b1b30b703c11c99a55c",
     "src/user_source/hdl_source/audio_spectrum_engine.v": "1d2e26c994bf359008aea448d4370b16545eb2643bd8ea5f037ce0b3f9a4e29c",
-    "src/user_source/hdl_source/audio_spectrum_overlay.v": "b93ded93c33b4c02e1caa687586a3ec824388710440350045968a936c2f14671",
+    "src/user_source/hdl_source/audio_spectrum_overlay.v": "7edc37eaad5a85e3e1443f230b852e0c16d14c050f38099b160cb961549c808b",
     "src/user_source/hdl_source/av_scene_events.v": "5af0b6dc3473f3e2038088a9ab48e99bdba0fd58f093351a73b5d1c4f0b559e6",
     "src/user_source/hdl_source/carousel_timeline.v": "27a963208a42c036211a9892aa1edc326b8bbcd8a860b166450dbcee4df90d19",
     "src/user_source/hdl_source/cdc_sync.v": "50bc2a4ca1a10cb2b08121f168b4861f1cccb215b9789eb77dd73453ca18a813",
     "src/user_source/hdl_source/direction_key_event.v": "c44ced582520e3fad768804ad579259989b1f65c24a58c263545e4e8fb7bb916",
-    "src/user_source/hdl_source/eased_motion_table.vh": "1c9272a55361c720bcaf5c97ae2d6dcc7de45c39186da877d84cefb7b85f428b",
+    "src/user_source/hdl_source/eased_motion_table.vh": "0081b6127658ee3cf9159dbb7292042b05ed99c42a890a9662e7c2ce11575d2e",
     "src/user_source/hdl_source/floor_guide_compositor.v": "97b703e24505312d67a3893f08a434456ee7b331db9ed3cef0883010a0d63f11",
     "src/user_source/hdl_source/guide_font_rom.v": "63a6873ed9c072795bc7eb7b461314b37ba18e7a23c08f614b7576c3a684b630",
     "src/user_source/hdl_source/guide_key_control.v": "d215c5e2c38d0e594fe6c994ba2d4d97b2d0e33b6f7cf854c9a08439dc1d2309",
     "src/user_source/hdl_source/guide_large_font.v": "f90afa442b630dd12e3d8eeeb681fc1599f3dde27593c9522a0f2fe9326a90ce",
     "src/user_source/hdl_source/guide_messages.vh": "1a9d93c9166f6f79cb4be3c9f3bd91d3e9439f6e81257c962e8220b0d8759de2",
     "src/user_source/hdl_source/guide_nav_buttons.v": "56ac2f876548206c5b89c5dbc7d4a8a80be0525736399687bd11e5453b4d6273",
-    "src/user_source/hdl_source/guide_scene_compositor.v": "179cb844f24d86521f09b5e57ec8df4ae86d76af8795c4fae9d020a0a6ebd1e6",
-    "src/user_source/hdl_source/guide_scene_control.v": "22dd52e471fa341fef14670c2f781907ecbe8cfae5a9fad7adb7064881735cdc",
+    "src/user_source/hdl_source/guide_scene_compositor.v": "d2a7273c1a4c5bdd606213562811e64b795299660aef1dbcba7ca93a7614c81e",
+    "src/user_source/hdl_source/guide_scene_control.v": "3887ef7ac50fe36d1427341465c566667eff34d0d77990d248e719a479eb14af",
     "src/user_source/hdl_source/guide_site_config.vh": "53ed32060ac85410468cd61f9ee8667868feb60aca373d25dd8963f5ceb24692",
     "src/user_source/hdl_source/hdmi_event_audio.v": "b2da0c0d3467a8b26890c52c44f87a027a60d2a0edae7afe609741385ab6f731",
     "src/user_source/hdl_source/hdmi_pcm_test_tone.v": "a6e11261c300e69914442426a3176285fa38914ba225322b420a9dacbc90ec90",
@@ -52,9 +532,9 @@
     "src/user_source/hdl_source/site_font_id.vh": "a74a72d5a1832be531f1fccc9f38bd5ab276d08c0fe484a63ea8acaa7648b624",
     "src/user_source/hdl_source/site_point_memory.v": "013dad8e13dfc62666582c6cc4b80ef85ce5bc7f7c30ffd96dcee81fe23db257",
     "src/user_source/hdl_source/site_runtime_wiring.vh": "8a4661164304f6354577e04bbf3ad3a124b759ba5c035a21f61d552521ba2f9c",
-    "src/user_source/hdl_source/site_scene_broker.v": "7983df5188f3bebca84ad85501c1e6d6806bec77ca3bac3d5b84f2d9f39fc745",
+    "src/user_source/hdl_source/site_scene_broker.v": "2e7cc0e079e1a5ea1f054f2610edc72f85f9937becaebeaaa97eabed25ca52a1",
     "src/user_source/hdl_source/startup_pulse.v": "e5c748c1eb1790e6ea4b326f3c42d7049af558cbf38c012c4f156fb51b60058b",
-    "src/user_source/hdl_source/top_tf_hdmi_audio.v": "bc41bfefe9c01334711791089357cb7d59130d432d134a61c941b09ea34f619e",
+    "src/user_source/hdl_source/top_tf_hdmi_audio.v": "aa34ec8cb6250a33782ce49e85b3e41267514727d7ee7bc727df8ffd96c70908",
     "src/user_source/hdl_source/ui_operation_events.v": "c76a6c2f804d64b25433572164c79115706e329590b1935fc83f8400e280a184",
     "src/user_source/hdl_source/ui_settings_overlay.v": "18f528332e613d5d54f718f2ce8a592e4364cdeaf471e22b0fb921c20b4ab365",
     "src/user_source/hdl_source/ui_text_request.vh": "9750de8e5b81f5e2590800f872441e394f184b5bbc483b8a9269704df075c31e",
@@ -87,10 +567,10 @@
     "src/user_source/hdl_source/SD/fat32_named_file.v": "c221eb1b705f4948a90c90ec97f45a7b5cf2b91b7f985b691de49b11dd73bbca",
     "src/user_source/hdl_source/SD/frame_fifo_read.v": "4e3bcfed40df25549aa3350c731b8cde46436d7e324c03a440e3ce0402fcce7a",
     "src/user_source/hdl_source/SD/frame_fifo_write.v": "24c324c1faae3ed70d42311280267c519cba47661575e0da32796d46a2249ae3",
-    "src/user_source/hdl_source/SD/frame_read_write.v": "b6be8011e26b31f504bd83bd5ec142c386aafe826982eb82ec204c4e322adcfc",
+    "src/user_source/hdl_source/SD/frame_read_write.v": "3114595bb213476a161a3f1fdbe772cd704b1b52f7e1b592ecf5a6d2d5b516ba",
     "src/user_source/hdl_source/SD/image_switch_scheduler.v": "36643ecbc930ef0ea0804a83189f797446346485d11527ef47745d93442909ef",
     "src/user_source/hdl_source/SD/resident_image_scheduler.v": "e1eedb6a30b86734ec11a7e9e54f4af74bee00e57003bc6c61e91b14f83b9644",
-    "src/user_source/hdl_source/SD/scene_frame_reader.v": "7d541af6477cd6cee4ae0f003995cb3e70ae3747f086f0dc291c08f947dbd6ff",
+    "src/user_source/hdl_source/SD/scene_frame_reader.v": "ce0744e3064c52f467aaf5703327fa667d2bc003d853c03b7845dcb915751d82",
     "src/user_source/hdl_source/SD/sdram.v": "fd9fe2a84b1ff7b58a5107fda1eaaf63bc150ed9e37310bf8028331c5f0898ce",
     "src/user_source/hdl_source/SD/sdram_refresh_guard.v": "50944fa4a9c07d114a243ce5e5b5533a7bda55d5f16539689840ca196a75b917",
     "src/user_source/hdl_source/SD/sd_card_bmp.v": "0d4bdcd1bba5a030ef4679b3e0184b7ac879aa146c3898ff9f62233ad48eb2f0",
@@ -109,2520 +589,21 @@
     "src/user_source/hdl_source/SD/video_sync_generator.v": "4ba9df98cad3803bac63be38bbeb89d27b2bff4283371fedce1e0bb3d13061d5",
     "src/user_source/hdl_source/SD/video_timing_data.v": "7d54e76803b5fadb5496d7d33eaa2c43fa2dd917268dccfbd94c7f7954190014"
   },
-  "builds": {
-    "syn_1": {
-      "run": "syn_1",
-      "exit_code": 0,
-      "seconds": 116.0,
-      "flow_marker": true,
-      "artifact_exists": true,
-      "sources_unchanged": true,
-      "artifact_new": true,
-      "pass": true
-    },
-    "phy_seed61": {
-      "run": "phy_seed61",
-      "exit_code": 0,
-      "seconds": 191.1,
-      "flow_marker": true,
-      "artifact_exists": true,
-      "sources_unchanged": true,
-      "artifact_new": true,
-      "pass": true
-    }
-  },
-  "allocator_simulation": {
-    "pass": true,
-    "scope": "Real allocator with seeded cache metadata; no SD payload or board timing modeled.",
-    "results": [
-      {
-        "run": "baseline",
-        "pass": true,
-        "expected_to_fail": true,
-        "exit_code": 1,
-        "seconds": 1.17,
-        "rtl_sha256": "4715865b59122d5a8644852a2e7f67b17be881d245a7f5b1ee4f5ce3eabd9a33",
-        "sources_unchanged": true,
-        "test_sha256": "489ee4acec198b0a6372ecb85d7b8c81ab742a53d9a55d0f593baa0285363744",
-        "evidence": [
-          "# ** Fatal: wrong eviction case=1 actual=001000 expected=010000 valid=110111"
-        ]
-      },
-      {
-        "run": "fixed",
-        "pass": true,
-        "expected_to_fail": false,
-        "exit_code": 0,
-        "seconds": 2.32,
-        "rtl_sha256": "cd97d2f30bd28b4f333dd6667cc8bd390eb3c12722343a8579aa895752eb1f12",
-        "sources_unchanged": true,
-        "test_sha256": "489ee4acec198b0a6372ecb85d7b8c81ab742a53d9a55d0f593baa0285363744",
-        "evidence": [
-          "# PASS directed: foreground room miss preserves newer two-slot map",
-          "# PASS directed: scattered pairs, legitimate map eviction, empty slots, stale footprints and all protection roots",
-          "# PASS: cache tail ownership suite cases=268 checks=1618"
-        ],
-        "cases": 268,
-        "checks": 1618
-      }
-    ]
-  },
-  "config_simulation": {
-    "pass": true,
-    "exit_code": 0,
-    "seconds": 5.22,
-    "source_cfg_sha256": "d2395df19ca7a3c8c60a36b2b3397239871265bfe76b99453fc82d56d8c5677c",
-    "rtl_sha256": "cd97d2f30bd28b4f333dd6667cc8bd390eb3c12722343a8579aa895752eb1f12",
-    "evidence": [
-      "# PASS: case 0 correct package, 54 sectors, 5632 ordered font writes, 8192 config bytes",
-      "# PASS: case 1 correct package, 54 sectors, 5632 ordered font writes, 8192 config bytes",
-      "# PASS: case 2 invalid package rejected (font writes 5632)",
-      "# PASS: case 3 invalid package rejected (font writes 5632)",
-      "# PASS: case 4 invalid package rejected (font writes 5632)",
-      "# PASS: case 5 invalid package rejected (font writes 0)",
-      "# PASS: case 6 invalid package rejected (font writes 5631)",
-      "# PASS: case 7 invalid package rejected (font writes 0)",
-      "# PASS: case 8 invalid package rejected (font writes 5632)",
-      "# PASS: case 9 invalid package rejected (font writes 5632)",
-      "# PASS: case 10 invalid package rejected (font writes 5632)",
-      "# PASS: case 11 invalid package rejected (font writes 131)",
-      "# PASS: case 11 filesystem error without file_end aborted and halted font writes",
-      "# PASS: dynamic config suite; cases=12 checked_font_words=50818 checked_sectors=504"
-    ],
-    "scope": "Real sd_site_assets FSM and config RAM; forced filesystem outputs. Checks all 5632 font words, 54 sectors, intermittent valid, all 8192 config video-read bytes, warm reset, invalid packages, and mid-read filesystem error without file_end. Does not simulate FAT/SPI electrical behavior or physical board."
-  },
-  "resources": {
-    "lut": 19063,
-    "reg": 11351,
-    "bram9k": 64,
-    "dsp": 28,
-    "mslice": 4863
-  },
-  "resource_limits": {
-    "mslice": 4900,
-    "lut": 19600,
-    "reg": 19600,
-    "bram9k": 64,
-    "dsp": 29
-  },
-  "baseline_resources": {
-    "lut": 19051,
-    "reg": 11375,
-    "bram9k": 64,
-    "dsp": 28,
-    "mslice": 4871
-  },
-  "timing": {
-    "setup_wns_ns": -5.565,
-    "setup_tns_ns": -198.373,
-    "min_wns_ns": -0.012,
-    "min_tns_ns": -0.016,
-    "groups": [
-      {
-        "group": "video_clk -> video_clk",
-        "Max": {
-          "wns_ns": 0.846,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.022,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "sd_card_clk -> sd_card_clk",
-        "Max": {
-          "wns_ns": 3.049,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": -0.004,
-          "tns_ns": -0.004,
-          "negative_endpoints": 1
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "ext_mem_clk -> ext_mem_clk",
-        "Max": {
-          "wns_ns": 0.404,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.037,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "clk -> clk",
-        "Max": {
-          "wns_ns": 11.963,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": -0.012,
-          "tns_ns": -0.012,
-          "negative_endpoints": 1
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "hdmi_5x_clk -> hdmi_5x_clk",
-        "Max": {
-          "wns_ns": 0.856,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.265,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "video_clk -> hdmi_5x_clk",
-        "Max": {
-          "wns_ns": 3.151,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.35,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "sd_card_clk -> video_clk",
-        "Max": {
-          "wns_ns": 2.631,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.244,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "video_clk -> sd_card_clk",
-        "Max": {
-          "wns_ns": 3.441,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.244,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "sd_card_clk -> ext_mem_clk",
-        "Max": {
-          "wns_ns": 6.967,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.424,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "clk -> ext_mem_clk",
-        "Max": {
-          "wns_ns": 6.998,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 1.747,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "clk -> hdmi_5x_clk",
-        "Max": {
-          "wns_ns": 2.164,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 1.624,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "clk -> sd_card_clk",
-        "Max": {
-          "wns_ns": 14.677,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 2.258,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "clk -> video_clk",
-        "Max": {
-          "wns_ns": 2.002,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 1.631,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "hdmi_5x_clk -> video_clk",
-        "Max": {
-          "wns_ns": 1.076,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 2.828,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "Max": {
-          "wns_ns": -1.27,
-          "tns_ns": -20.293,
-          "negative_endpoints": 32
-        },
-        "Min": {
-          "wns_ns": 4.874,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": true
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "Max": {
-          "wns_ns": -5.565,
-          "tns_ns": -178.08,
-          "negative_endpoints": 32
-        },
-        "Min": {
-          "wns_ns": 9.43,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": true
-      },
-      {
-        "group": "",
-        "Max": {
-          "wns_ns": 7.879,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.0,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "",
-        "Max": {
-          "wns_ns": 8.397,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.0,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      }
-    ],
-    "negative_paths_reported": [
-      {
-        "group": "sd_card_clk -> sd_card_clk",
-        "slack_ns": -0.004,
-        "begin": "frame_read_write_m0/write_buf/wr_addr_reg[6]_syn_4.clk (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-        "end": "frame_read_write_m0/write_buf/ram_inst/ramread0_syn_25.addra[10] (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-        "type": "hold"
-      },
-      {
-        "group": "clk -> clk",
-        "slack_ns": -0.012,
-        "begin": "u_spectrum_overlay/spectrum/add2_syn_73.clk (rising edge triggered by clock clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-        "end": "diag_code_stable_reg[0]_syn_7.sr (rising edge triggered by clock clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-        "type": "removal"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.27,
-        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[19] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.27,
-        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[18] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.27,
-        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[17] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.27,
-        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[16] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.074,
-        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[21] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.074,
-        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[20] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -0.878,
-        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[22] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -0.834,
-        "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[23] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -0.654,
-        "begin": "u_spectrum_overlay/spectrum/height_q_reg[0]_syn_194.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[31] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -0.654,
-        "begin": "u_spectrum_overlay/spectrum/height_q_reg[0]_syn_194.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[30] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[0] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_1.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[6] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_2.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[7] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_3.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[1] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_7.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[23] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_18.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[22] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_19.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[21] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_20.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[20] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_21.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[19] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_22.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[18] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_23.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      }
-    ],
-    "max_negative_endpoints": 64,
-    "min_negative_endpoints": 2,
-    "sdram_max_negative_endpoints": 64,
-    "other_max_negative_endpoints": 0,
-    "min_types_reported": {
-      "hold": {
-        "negative_endpoints_reported": 1,
-        "worst_slack_ns": -0.004
-      },
-      "removal": {
-        "negative_endpoints_reported": 1,
-        "worst_slack_ns": -0.012
-      }
-    },
-    "min_type_breakdown_complete": true,
-    "report_limit_note": "Detailed paths are limited by the report scheme; group endpoint statistics remain authoritative."
-  },
-  "baseline_timing": {
-    "setup_wns_ns": -5.565,
-    "setup_tns_ns": -203.688,
-    "min_wns_ns": -0.005,
-    "min_tns_ns": -0.019,
-    "groups": [
-      {
-        "group": "video_clk -> video_clk",
-        "Max": {
-          "wns_ns": 0.538,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": -0.005,
-          "tns_ns": -0.015,
-          "negative_endpoints": 3
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "sd_card_clk -> sd_card_clk",
-        "Max": {
-          "wns_ns": 1.889,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.071,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "ext_mem_clk -> ext_mem_clk",
-        "Max": {
-          "wns_ns": 0.275,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": -0.004,
-          "tns_ns": -0.004,
-          "negative_endpoints": 1
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "clk -> clk",
-        "Max": {
-          "wns_ns": 11.33,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.104,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "hdmi_5x_clk -> hdmi_5x_clk",
-        "Max": {
-          "wns_ns": 0.991,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.239,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "video_clk -> hdmi_5x_clk",
-        "Max": {
-          "wns_ns": 3.06,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.35,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "sd_card_clk -> video_clk",
-        "Max": {
-          "wns_ns": 3.556,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.244,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "video_clk -> sd_card_clk",
-        "Max": {
-          "wns_ns": 3.506,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.244,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "sd_card_clk -> ext_mem_clk",
-        "Max": {
-          "wns_ns": 6.153,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.775,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "clk -> ext_mem_clk",
-        "Max": {
-          "wns_ns": 7.002,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 1.631,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "clk -> hdmi_5x_clk",
-        "Max": {
-          "wns_ns": 1.691,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 1.806,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "clk -> sd_card_clk",
-        "Max": {
-          "wns_ns": 16.625,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 2.001,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "clk -> video_clk",
-        "Max": {
-          "wns_ns": 1.661,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 1.935,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "hdmi_5x_clk -> video_clk",
-        "Max": {
-          "wns_ns": 1.038,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 2.852,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "Max": {
-          "wns_ns": -1.858,
-          "tns_ns": -25.608,
-          "negative_endpoints": 32
-        },
-        "Min": {
-          "wns_ns": 4.874,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": true
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "Max": {
-          "wns_ns": -5.565,
-          "tns_ns": -178.08,
-          "negative_endpoints": 32
-        },
-        "Min": {
-          "wns_ns": 9.43,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": true
-      },
-      {
-        "group": "",
-        "Max": {
-          "wns_ns": 6.842,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.0,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      },
-      {
-        "group": "",
-        "Max": {
-          "wns_ns": 8.492,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "Min": {
-          "wns_ns": 0.0,
-          "tns_ns": 0.0,
-          "negative_endpoints": 0
-        },
-        "sdram_interface": false
-      }
-    ],
-    "negative_paths_reported": [
-      {
-        "group": "video_clk -> video_clk",
-        "slack_ns": -0.005,
-        "begin": "u_hdmi_1_4b_transmitter_core_wrapper/u0_reset_sync/O_sync_reset_reg_syn_69.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-        "end": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u_hdmi_island_data_gen/O_BCH_block_1_reg[20]_syn_4.sr (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-        "type": "removal"
-      },
-      {
-        "group": "video_clk -> video_clk",
-        "slack_ns": -0.005,
-        "begin": "u_hdmi_1_4b_transmitter_core_wrapper/u0_reset_sync/O_sync_reset_reg_syn_69.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-        "end": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u_hdmi_island_data_gen/U_audio_sample_packet_2_channel/u_w96_d1024_fifo/u_logic_ramfifo[1]__4_syn_4.sr (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-        "type": "removal"
-      },
-      {
-        "group": "video_clk -> video_clk",
-        "slack_ns": -0.005,
-        "begin": "u_hdmi_1_4b_transmitter_core_wrapper/u0_reset_sync/O_sync_reset_reg_syn_69.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-        "end": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u_hdmi_island_data_gen/U_audio_sample_packet_2_channel/u_w96_d1024_fifo/u_logic_ramfifo[7]__3_syn_4.sr (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-        "type": "removal"
-      },
-      {
-        "group": "ext_mem_clk -> ext_mem_clk",
-        "slack_ns": -0.004,
-        "begin": "frame_read_write_m0/read_buf/wr_addr_reg[2]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "frame_read_write_m0/read_buf/ram_inst/ramread0_syn_25.addra[6] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "hold"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.858,
-        "begin": "u_guide_scene_compositor/add16_syn_54.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[29] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.851,
-        "begin": "u_guide_scene_compositor/add16_syn_54.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[31] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.851,
-        "begin": "u_guide_scene_compositor/add16_syn_54.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[30] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.851,
-        "begin": "u_guide_scene_compositor/add16_syn_54.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[28] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.666,
-        "begin": "u_guide_scene_compositor/add16_syn_54.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[27] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.666,
-        "begin": "u_guide_scene_compositor/add16_syn_54.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[26] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.287,
-        "begin": "u_spectrum_overlay/spectrum/peak_q_b1[14]_syn_70.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[25] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -1.283,
-        "begin": "u_spectrum_overlay/spectrum/peak_q_b1[14]_syn_70.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[24] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -0.671,
-        "begin": "u_guide_scene_compositor/add16_syn_54.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[23] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-        "slack_ns": -0.671,
-        "begin": "u_guide_scene_compositor/add16_syn_54.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "end": "U3/sdram.dq[19] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[0] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_1.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[6] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_2.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[7] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_3.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[1] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_7.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[23] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_18.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[22] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_19.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[21] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_20.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[20] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_21.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[19] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_22.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      },
-      {
-        "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-        "slack_ns": -5.565,
-        "begin": "U3/sdram.dq[18] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-        "end": "U3/sdram_syn_23.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-        "type": "setup"
-      }
-    ],
-    "max_negative_endpoints": 64,
-    "min_negative_endpoints": 4,
-    "sdram_max_negative_endpoints": 64,
-    "other_max_negative_endpoints": 0,
-    "min_types_reported": {
-      "hold": {
-        "negative_endpoints_reported": 1,
-        "worst_slack_ns": -0.004
-      },
-      "removal": {
-        "negative_endpoints_reported": 3,
-        "worst_slack_ns": -0.005
-      }
-    },
-    "min_type_breakdown_complete": true,
-    "report_limit_note": "Detailed paths are limited by the report scheme; group endpoint statistics remain authoritative."
-  },
-  "implementation_comparison": [
-    {
-      "run": "phy_seed23",
-      "selected": false,
-      "resources": {
-        "lut": 19076,
-        "reg": 11353,
-        "bram9k": 64,
-        "dsp": 28,
-        "mslice": 4870
-      },
-      "timing": {
-        "setup_wns_ns": -5.565,
-        "setup_tns_ns": -213.833,
-        "min_wns_ns": -0.02,
-        "min_tns_ns": -0.091,
-        "groups": [
-          {
-            "group": "video_clk -> video_clk",
-            "Max": {
-              "wns_ns": -0.098,
-              "tns_ns": -0.098,
-              "negative_endpoints": 1
-            },
-            "Min": {
-              "wns_ns": -0.02,
-              "tns_ns": -0.031,
-              "negative_endpoints": 2
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "sd_card_clk -> sd_card_clk",
-            "Max": {
-              "wns_ns": 2.646,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": -0.02,
-              "tns_ns": -0.028,
-              "negative_endpoints": 2
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "Max": {
-              "wns_ns": -1.1,
-              "tns_ns": -4.057,
-              "negative_endpoints": 9
-            },
-            "Min": {
-              "wns_ns": -0.02,
-              "tns_ns": -0.032,
-              "negative_endpoints": 2
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> clk",
-            "Max": {
-              "wns_ns": 11.557,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.124,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "hdmi_5x_clk -> hdmi_5x_clk",
-            "Max": {
-              "wns_ns": 0.937,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.239,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "video_clk -> hdmi_5x_clk",
-            "Max": {
-              "wns_ns": 3.454,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.244,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "sd_card_clk -> video_clk",
-            "Max": {
-              "wns_ns": 3.471,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.244,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "video_clk -> sd_card_clk",
-            "Max": {
-              "wns_ns": 3.341,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.244,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "sd_card_clk -> ext_mem_clk",
-            "Max": {
-              "wns_ns": 6.988,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.505,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> ext_mem_clk",
-            "Max": {
-              "wns_ns": 6.722,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 1.746,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> hdmi_5x_clk",
-            "Max": {
-              "wns_ns": 1.691,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 1.769,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> sd_card_clk",
-            "Max": {
-              "wns_ns": 15.555,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 2.245,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> video_clk",
-            "Max": {
-              "wns_ns": 1.734,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 1.817,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "hdmi_5x_clk -> video_clk",
-            "Max": {
-              "wns_ns": 1.317,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 2.657,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "Max": {
-              "wns_ns": -2.072,
-              "tns_ns": -31.598,
-              "negative_endpoints": 32
-            },
-            "Min": {
-              "wns_ns": 4.874,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": true
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "Max": {
-              "wns_ns": -5.565,
-              "tns_ns": -178.08,
-              "negative_endpoints": 32
-            },
-            "Min": {
-              "wns_ns": 9.43,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": true
-          },
-          {
-            "group": "",
-            "Max": {
-              "wns_ns": 8.509,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.0,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "",
-            "Max": {
-              "wns_ns": 7.979,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.0,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          }
-        ],
-        "negative_paths_reported": [
-          {
-            "group": "video_clk -> video_clk",
-            "slack_ns": -0.098,
-            "begin": "u_guide_scene_compositor/glyph[1]_syn_102.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "end": "u_guide_scene_compositor/large_font/ramread1_syn_36.addrb[10] (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "video_clk -> video_clk",
-            "slack_ns": -0.02,
-            "begin": "u_guide_scene_compositor/marker_points/write_y_reg[2]_syn_4.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "end": "u_guide_scene_compositor/marker_points/ramread0_syn_6.dib[7] (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "type": "hold"
-          },
-          {
-            "group": "video_clk -> video_clk",
-            "slack_ns": -0.011,
-            "begin": "u_guide_scene_compositor/marker_points/write_y_reg[1]_syn_4.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "end": "u_guide_scene_control/nav_points/ramread0_syn_6.dib[2] (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "type": "hold"
-          },
-          {
-            "group": "sd_card_clk -> sd_card_clk",
-            "slack_ns": -0.02,
-            "begin": "u_site_assets/font_write_data_reg[1]_syn_4.clk (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-            "end": "u_guide_scene_compositor/notes_font/ramread1_syn_6.dia[2] (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-            "type": "hold"
-          },
-          {
-            "group": "sd_card_clk -> sd_card_clk",
-            "slack_ns": -0.008,
-            "begin": "u_site_assets/g_audio$fs/fs/current_cluster_reg[20]_syn_4.clk (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-            "end": "u_site_assets/g_audio$fs/fs/ramread0_syn_267.c[1] (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-            "type": "hold"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -1.1,
-            "begin": "frame_read_write_m0/u_scene_reader/map_emit_reg[12]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/filter_cache/ramread0_syn_6.addrb[9] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.725,
-            "begin": "frame_read_write_m0/u_scene_reader/map_emit_reg[12]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/filter_cache/ramread0_syn_25.addrb[7] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.572,
-            "begin": "frame_read_write_m0/u_scene_reader/filter_sx_reg[0]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/filter_issued_reg[3]_syn_4.ce (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.556,
-            "begin": "frame_read_write_m0/u_scene_reader/filter_sx_reg[0]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/filter_issued_reg[6]_syn_4.ce (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.551,
-            "begin": "frame_read_write_m0/u_scene_reader/source_last_x_reg[1]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/clamped_last_reg[8]_syn_4.a[1] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.26,
-            "begin": "frame_read_write_m0/u_scene_reader/map_emit_reg[12]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/filter_cache/qsame_reg_syn_5.d[1] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.123,
-            "begin": "frame_read_write_m0/u_scene_reader/received_reg[6]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/last_received_x_reg[7]_syn_4.ce (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.092,
-            "begin": "frame_read_write_m0/u_scene_reader/filter_sx_reg[0]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/filter_issued_reg[1]_syn_4.ce (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.078,
-            "begin": "frame_read_write_m0/u_scene_reader/span_pixels_reg[1]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/emitted_reg[3]_syn_4.ce (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.02,
-            "begin": "frame_read_write_m0/read_buf/wr_addr_reg[6]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/read_buf/ram_inst/ramread0_syn_6.addra[9] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "hold"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.012,
-            "begin": "frame_read_write_m0/u_scene_reader/received_reg[1]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/filter_cache/ramread0_syn_25.addra[5] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "hold"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -2.072,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[17] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -2.072,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[16] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.916,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[19] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.916,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[18] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.72,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[22] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.72,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[21] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.72,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[20] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.524,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[23] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.439,
-            "begin": "video_timing_data_m0/u_sync_generator/h_active_reg_syn_24.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[31] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.439,
-            "begin": "video_timing_data_m0/u_sync_generator/h_active_reg_syn_24.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[30] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[0] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_1.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[6] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_2.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[7] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_3.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[1] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_7.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[23] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_18.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[22] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_19.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[21] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_20.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[20] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_21.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[19] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_22.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[18] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_23.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          }
-        ],
-        "max_negative_endpoints": 74,
-        "min_negative_endpoints": 6,
-        "sdram_max_negative_endpoints": 64,
-        "other_max_negative_endpoints": 10,
-        "min_types_reported": {
-          "hold": {
-            "negative_endpoints_reported": 6,
-            "worst_slack_ns": -0.02
-          },
-          "removal": {
-            "negative_endpoints_reported": 0,
-            "worst_slack_ns": null
-          }
-        },
-        "min_type_breakdown_complete": true,
-        "report_limit_note": "Detailed paths are limited by the report scheme; group endpoint statistics remain authoritative."
-      }
-    },
-    {
-      "run": "phy_seed37",
-      "selected": false,
-      "resources": {
-        "lut": 19087,
-        "reg": 11351,
-        "bram9k": 64,
-        "dsp": 28,
-        "mslice": 4871
-      },
-      "timing": {
-        "setup_wns_ns": -5.565,
-        "setup_tns_ns": -214.347,
-        "min_wns_ns": -0.011,
-        "min_tns_ns": -0.035,
-        "groups": [
-          {
-            "group": "video_clk -> video_clk",
-            "Max": {
-              "wns_ns": 0.429,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": -0.011,
-              "tns_ns": -0.027,
-              "negative_endpoints": 3
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "sd_card_clk -> sd_card_clk",
-            "Max": {
-              "wns_ns": 3.87,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.02,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "Max": {
-              "wns_ns": -1.494,
-              "tns_ns": -18.413,
-              "negative_endpoints": 27
-            },
-            "Min": {
-              "wns_ns": -0.004,
-              "tns_ns": -0.008,
-              "negative_endpoints": 2
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> clk",
-            "Max": {
-              "wns_ns": 11.625,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.102,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "hdmi_5x_clk -> hdmi_5x_clk",
-            "Max": {
-              "wns_ns": 0.546,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.223,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "video_clk -> hdmi_5x_clk",
-            "Max": {
-              "wns_ns": 3.349,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.39,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "sd_card_clk -> video_clk",
-            "Max": {
-              "wns_ns": 2.205,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.244,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "video_clk -> sd_card_clk",
-            "Max": {
-              "wns_ns": 3.163,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.253,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "sd_card_clk -> ext_mem_clk",
-            "Max": {
-              "wns_ns": 6.347,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.414,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> video_clk",
-            "Max": {
-              "wns_ns": 1.729,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 1.74,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> ext_mem_clk",
-            "Max": {
-              "wns_ns": 5.553,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 2.647,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> hdmi_5x_clk",
-            "Max": {
-              "wns_ns": 1.745,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 1.624,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> sd_card_clk",
-            "Max": {
-              "wns_ns": 15.964,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 1.873,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "hdmi_5x_clk -> video_clk",
-            "Max": {
-              "wns_ns": 0.966,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 2.914,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "Max": {
-              "wns_ns": -1.132,
-              "tns_ns": -17.854,
-              "negative_endpoints": 32
-            },
-            "Min": {
-              "wns_ns": 4.874,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": true
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "Max": {
-              "wns_ns": -5.565,
-              "tns_ns": -178.08,
-              "negative_endpoints": 32
-            },
-            "Min": {
-              "wns_ns": 9.43,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": true
-          },
-          {
-            "group": "",
-            "Max": {
-              "wns_ns": 8.003,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.0,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "",
-            "Max": {
-              "wns_ns": 8.553,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.0,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          }
-        ],
-        "negative_paths_reported": [
-          {
-            "group": "video_clk -> video_clk",
-            "slack_ns": -0.011,
-            "begin": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u_hdmi_island_data_gen/U_audio_sample_packet_2_channel/S_packet_body_1d_reg[50]_syn_4.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "end": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u_hdmi_island_data_gen/U_audio_sample_packet_2_channel/u_w96_d1024_fifo/u_logic_ramfifo_syn_544.dia[8] (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "type": "hold"
-          },
-          {
-            "group": "video_clk -> video_clk",
-            "slack_ns": -0.011,
-            "begin": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u_hdmi_island_data_gen/U_audio_sample_packet_2_channel/S_packet_body[55]_syn_63.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "end": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u_hdmi_island_data_gen/U_audio_sample_packet_2_channel/u_w96_d1024_fifo/u_logic_ramfifo_syn_584.dia[8] (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "type": "hold"
-          },
-          {
-            "group": "video_clk -> video_clk",
-            "slack_ns": -0.005,
-            "begin": "u_hdmi_1_4b_transmitter_core_wrapper/u0_reset_sync/O_sync_reset_reg_syn_74.clk (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "end": "u_hdmi_1_4b_transmitter_core_wrapper/u_hdmi_tx_controller_wrapper/u0_hdmi_tmds_encode/S_control_signal_code_reg[0]_syn_4.sr (rising edge triggered by clock video_clk  { rise@0.000000ns  fall@12.500000ns  period=25.000000 })",
-            "type": "removal"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -1.494,
-            "begin": "frame_read_write_m0/u_scene_reader/source_meta_reg[29]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/received_reg[6]_syn_4.d[0] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -1.494,
-            "begin": "frame_read_write_m0/u_scene_reader/source_meta_reg[29]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/received_reg[6]_syn_4.d[1] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -1.128,
-            "begin": "frame_read_write_m0/u_scene_reader/map_emit_reg[16]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/map_emit_reg[22]_syn_4.ce (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -1.102,
-            "begin": "frame_read_write_m0/u_scene_reader/source_meta_reg[29]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/received_reg[1]_syn_4.d[0] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -1.102,
-            "begin": "frame_read_write_m0/u_scene_reader/source_meta_reg[29]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/received_reg[1]_syn_4.d[1] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.997,
-            "begin": "frame_read_write_m0/u_scene_reader/source_meta_reg[29]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/filter_issued_reg[3]_syn_4.d[0] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.997,
-            "begin": "frame_read_write_m0/u_scene_reader/source_meta_reg[29]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/filter_issued_reg[3]_syn_4.d[1] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.997,
-            "begin": "frame_read_write_m0/u_scene_reader/source_meta_reg[29]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/filter_issued_reg[6]_syn_4.d[0] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.997,
-            "begin": "frame_read_write_m0/u_scene_reader/source_meta_reg[29]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/filter_issued_reg[6]_syn_4.d[1] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.893,
-            "begin": "frame_read_write_m0/u_scene_reader/map_emit_reg[16]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/u_scene_reader/map_emit_reg[13]_syn_4.ce (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.004,
-            "begin": "frame_read_write_m0/read_buf/wr_addr_reg[8]_syn_4.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/read_buf/ram_inst/ramread0_syn_25.addra[11] (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "hold"
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "slack_ns": -0.004,
-            "begin": "frame_read_write_m0/write_buf/asy_r_rst1_reg_syn_5.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "frame_read_write_m0/write_buf/wr_to_rd_cross_inst/secondary_addr_o_reg[2]_syn_4.sr (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "removal"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.132,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_20.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[14] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.132,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_20.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[15] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.977,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_20.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[12] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.977,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_20.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[13] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.74,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_20.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[8] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.74,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_20.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[9] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.74,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_20.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[10] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.74,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_20.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[11] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.682,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_23.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[17] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.682,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_23.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[16] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[0] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_1.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[6] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_2.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[7] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_3.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[1] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_7.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[23] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_18.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[22] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_19.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[21] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_20.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[20] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_21.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[19] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_22.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[18] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_23.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          }
-        ],
-        "max_negative_endpoints": 91,
-        "min_negative_endpoints": 5,
-        "sdram_max_negative_endpoints": 64,
-        "other_max_negative_endpoints": 27,
-        "min_types_reported": {
-          "hold": {
-            "negative_endpoints_reported": 3,
-            "worst_slack_ns": -0.011
-          },
-          "removal": {
-            "negative_endpoints_reported": 2,
-            "worst_slack_ns": -0.005
-          }
-        },
-        "min_type_breakdown_complete": true,
-        "report_limit_note": "Detailed paths are limited by the report scheme; group endpoint statistics remain authoritative."
-      }
-    },
-    {
-      "run": "phy_seed61",
-      "selected": true,
-      "resources": {
-        "lut": 19063,
-        "reg": 11351,
-        "bram9k": 64,
-        "dsp": 28,
-        "mslice": 4863
-      },
-      "timing": {
-        "setup_wns_ns": -5.565,
-        "setup_tns_ns": -198.373,
-        "min_wns_ns": -0.012,
-        "min_tns_ns": -0.016,
-        "groups": [
-          {
-            "group": "video_clk -> video_clk",
-            "Max": {
-              "wns_ns": 0.846,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.022,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "sd_card_clk -> sd_card_clk",
-            "Max": {
-              "wns_ns": 3.049,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": -0.004,
-              "tns_ns": -0.004,
-              "negative_endpoints": 1
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "ext_mem_clk -> ext_mem_clk",
-            "Max": {
-              "wns_ns": 0.404,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.037,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> clk",
-            "Max": {
-              "wns_ns": 11.963,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": -0.012,
-              "tns_ns": -0.012,
-              "negative_endpoints": 1
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "hdmi_5x_clk -> hdmi_5x_clk",
-            "Max": {
-              "wns_ns": 0.856,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.265,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "video_clk -> hdmi_5x_clk",
-            "Max": {
-              "wns_ns": 3.151,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.35,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "sd_card_clk -> video_clk",
-            "Max": {
-              "wns_ns": 2.631,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.244,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "video_clk -> sd_card_clk",
-            "Max": {
-              "wns_ns": 3.441,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.244,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "sd_card_clk -> ext_mem_clk",
-            "Max": {
-              "wns_ns": 6.967,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.424,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> ext_mem_clk",
-            "Max": {
-              "wns_ns": 6.998,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 1.747,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> hdmi_5x_clk",
-            "Max": {
-              "wns_ns": 2.164,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 1.624,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> sd_card_clk",
-            "Max": {
-              "wns_ns": 14.677,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 2.258,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "clk -> video_clk",
-            "Max": {
-              "wns_ns": 2.002,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 1.631,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "hdmi_5x_clk -> video_clk",
-            "Max": {
-              "wns_ns": 1.076,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 2.828,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "Max": {
-              "wns_ns": -1.27,
-              "tns_ns": -20.293,
-              "negative_endpoints": 32
-            },
-            "Min": {
-              "wns_ns": 4.874,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": true
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "Max": {
-              "wns_ns": -5.565,
-              "tns_ns": -178.08,
-              "negative_endpoints": 32
-            },
-            "Min": {
-              "wns_ns": 9.43,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": true
-          },
-          {
-            "group": "",
-            "Max": {
-              "wns_ns": 7.879,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.0,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          },
-          {
-            "group": "",
-            "Max": {
-              "wns_ns": 8.397,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "Min": {
-              "wns_ns": 0.0,
-              "tns_ns": 0.0,
-              "negative_endpoints": 0
-            },
-            "sdram_interface": false
-          }
-        ],
-        "negative_paths_reported": [
-          {
-            "group": "sd_card_clk -> sd_card_clk",
-            "slack_ns": -0.004,
-            "begin": "frame_read_write_m0/write_buf/wr_addr_reg[6]_syn_4.clk (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-            "end": "frame_read_write_m0/write_buf/ram_inst/ramread0_syn_25.addra[10] (rising edge triggered by clock sd_card_clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-            "type": "hold"
-          },
-          {
-            "group": "clk -> clk",
-            "slack_ns": -0.012,
-            "begin": "u_spectrum_overlay/spectrum/add2_syn_73.clk (rising edge triggered by clock clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-            "end": "diag_code_stable_reg[0]_syn_7.sr (rising edge triggered by clock clk  { rise@0.000000ns  fall@10.000000ns  period=20.000000 })",
-            "type": "removal"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.27,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[19] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.27,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[18] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.27,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[17] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.27,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[16] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.074,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[21] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -1.074,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[20] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.878,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[22] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.834,
-            "begin": "U3/u2_ram/u2_wrrd/sdr_t_reg_syn_17.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[23] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.654,
-            "begin": "u_spectrum_overlay/spectrum/height_q_reg[0]_syn_194.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[31] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "ext_mem_clk -> sys_pll_m0/pll_inst.clkc[2]",
-            "slack_ns": -0.654,
-            "begin": "u_spectrum_overlay/spectrum/height_q_reg[0]_syn_194.clk (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "end": "U3/sdram.dq[30] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[0] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_1.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[6] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_2.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[7] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_3.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[1] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_7.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[23] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_18.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[22] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_19.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[21] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_20.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[20] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_21.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[19] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_22.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          },
-          {
-            "group": "sys_pll_m0/pll_inst.clkc[2] -> ext_mem_clk",
-            "slack_ns": -5.565,
-            "begin": "U3/sdram.dq[18] (rising edge triggered by clock sys_pll_m0/pll_inst.clkc[2]  { rise@5.000000ns  fall@0.000000ns  period=10.000000 })",
-            "end": "U3/sdram_syn_23.bpad (rising edge triggered by clock ext_mem_clk  { rise@0.000000ns  fall@5.000000ns  period=10.000000 })",
-            "type": "setup"
-          }
-        ],
-        "max_negative_endpoints": 64,
-        "min_negative_endpoints": 2,
-        "sdram_max_negative_endpoints": 64,
-        "other_max_negative_endpoints": 0,
-        "min_types_reported": {
-          "hold": {
-            "negative_endpoints_reported": 1,
-            "worst_slack_ns": -0.004
-          },
-          "removal": {
-            "negative_endpoints_reported": 1,
-            "worst_slack_ns": -0.012
-          }
-        },
-        "min_type_breakdown_complete": true,
-        "report_limit_note": "Detailed paths are limited by the report scheme; group endpoint statistics remain authoritative."
-      }
-    }
+  "board_test": "pending",
+  "native_rect": [
+    80,
+    60,
+    640,
+    480
   ],
-  "prefetch_order_changed": false,
-  "cancellation_changed": false,
-  "constraints_changed": false,
-  "site_cfg_changed": false,
-  "baseline_bitstream_sha256": "4d9136727276f974011ddd6bb3089e0d0d67eeebaa472a804d31dfe0b3618d19",
-  "board_test_evidence": "board_verification.json",
-  "board_test_statement": "已经确认,修改",
-  "prior_unchanged_module_verification": {
-    "project": "D:\\BaiduNetdiskDownload\\HX4S20_Contest_202606\\newp\\lab_image_photo_overlay_20261015",
-    "manifest": "D:\\BaiduNetdiskDownload\\HX4S20_Contest_202606\\newp\\lab_image_photo_overlay_20261015\\release\\manifest.json",
-    "validation": "D:\\BaiduNetdiskDownload\\HX4S20_Contest_202606\\newp\\lab_image_photo_overlay_20261015\\release\\验证记录.md",
-    "changed_production_source": "src/user_source/hdl_source/SD/sd_site_assets.v",
-    "current_source_hashes_verified": true,
-    "tests_rerun_during_report_update": false
-  }
+  "progress_rect": [
+    80,
+    540,
+    640,
+    6
+  ],
+  "progress_exact_input_positions": 512,
+  "layout_fade": "content only, alpha 16..0..16, frame-boundary geometry handoff",
+  "synthesis": "add_map_lut_struct off, original area settings; one explicit dsp_style=yes native progress multiplier",
+  "inherited_evidence": "D:\\BaiduNetdiskDownload\\HX4S20_Contest_202606\\newp\\lab_image_carousel_native_20261022\\release\\manifest.json"
 }

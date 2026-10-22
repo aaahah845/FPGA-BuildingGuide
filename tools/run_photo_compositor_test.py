@@ -4,7 +4,7 @@ ROOT=Path(__file__).resolve().parents[1]
 SRC=ROOT/'src/user_source/hdl_source'
 OUT=ROOT/'reports/photo_overlay/compositor_sim'
 OUT.mkdir(parents=True,exist_ok=True)
-packet=(ROOT/'release/SITE.CFG').read_bytes()
+packet=(ROOT/'config/sd_card/SITE.CFG').read_bytes()
 assert len(packet)==27648 and packet[4]==6
 (OUT/'config.hex').write_text(''.join(f'{b:02x}\n' for b in packet[:8192]),encoding='ascii')
 words=[int.from_bytes(packet[i:i+4],'little') for i in range(8192,24576,4)]

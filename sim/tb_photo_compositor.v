@@ -2,6 +2,7 @@
 module tb_photo_compositor;
 reg clk=0,rst=1,hs=0,vs=0,de=0,full=0,map_page=0;
 reg [4:0] alpha=0;
+reg [7:0] test_panel_height=210;reg test_detail=1;
 reg [15:0] overlay565=0;
 reg [15:0] op[0:5];
 reg [23:0] source_rgb=0,underlying_rgb=0;
@@ -24,13 +25,13 @@ wire oh,ov,od,rh,rv,rd;
  .I_floor_idx(2'd0),.I_selection_visible(1'b1),.I_floor_selecting(1'b0), \
  .I_floor_cursor(2'd0),.I_requested_floor(2'd0),.I_selected_room_idx(4'd0), \
  .I_room_occupied(30'd0),.I_elapsed_bcd(16'd0),.I_auto_play_en(1'b0), \
- .I_detail_requested(1'b1),.I_view_settled(1'b1),.I_carousel_progress(13'd0), \
- .I_period_select(2'd0),.I_panel_height(8'd210), \
+ .I_detail_requested(test_detail),.I_view_settled(1'b1),.I_carousel_progress(13'd0), \
+ .I_period_select(2'd0),.I_panel_height(test_panel_height), \
  .I_map_view(37'd0),.I_map_scale(14'd4096),.I_map_width(11'd640), \
  .I_map_height(10'd480),.I_map_mode(map_page),.I_map_zoom(1'b0), \
  .I_map_pan(1'b0),.I_map_x(9'd0),.I_map_y(8'd0)
 guide_scene_compositor #(.RUNTIME_CONFIG(1)) dut(
- `PORTS,.I_rgb(source_rgb),.I_photo_full(full),.I_photo_view_alpha(alpha),.I_photo_rgb565(overlay565),.O_rgb(rgb),.O_hs(oh),.O_vs(ov),.O_de(od),.O_panel_active());
+ `PORTS,.I_carousel_native(1'b0),.I_layout_alpha(5'd16),.I_rgb(source_rgb),.I_photo_full(full),.I_photo_view_alpha(alpha),.I_photo_rgb565(overlay565),.O_rgb(rgb),.O_hs(oh),.O_vs(ov),.O_de(od),.O_panel_active());
 guide_scene_compositor_baseline #(.RUNTIME_CONFIG(1)) baseline(
  `PORTS,.I_rgb(underlying_rgb),.I_photo_full(1'b0),.O_rgb(reference_rgb),.O_hs(rh),.O_vs(rv),.O_de(rd),.O_panel_active());
 `undef PORTS
@@ -116,7 +117,7 @@ task frame;
   checking=1;
   for(y=0;y<600;y=y+1) begin
    if(complete || y==0 || y==12 || y==35 || y==59 || y==60 || y==61 ||
-      y==135 || y==136 || y==240 || y==495 || y==496 || y==539 || y==540 ||
+      y==68 || y==74 || y==88 || y==90 || y==104 || y==112 || y==182 || y==252 || y==322 || y==392 || y==462 || y==406 || y==478 || y==502 || y==135 || y==136 || y==240 || y==495 || y==496 || y==539 || y==540 ||
       y==548 || y==563 || y==568 || y==574 || y==596 || y==599) begin
    expected_checks=expected_checks+800;
    for(x=0;x<800;x=x+1) begin
@@ -159,21 +160,25 @@ initial begin
   @(negedge clk);font_we=1;font_addr=load_i;font_data=font_words[load_i];
  end
  @(negedge clk);font_we=0;
+ // Full-width room, floor and title text addresses, with the panel closed.
+ test_panel_height=0;test_detail=0;
+ frame(0,0,0,0);frame(0,0,1,0);
+ test_panel_height=210;test_detail=1;
  // Opening, stable view, then reverse/close, on both detail-page backdrops.
  frame(0,0,0,0);
  frame(0,1,0,0);
- frame(0,8,0,1);
+ frame(0,8,0,0);
  frame(0,15,0,0);
- frame(1,16,0,1);
+ frame(1,16,0,0);
  frame(0,15,0,0);
  frame(0,8,0,0);
  frame(0,1,0,0);
  frame(0,0,0,0);
  frame(0,0,1,0);
  frame(0,1,1,0);
- frame(0,8,1,1);
+ frame(0,8,1,0);
  frame(0,15,1,0);
- frame(1,16,1,1);
+ frame(1,16,1,0);
  frame(0,15,1,0);
  frame(0,8,1,0);
  frame(0,1,1,0);

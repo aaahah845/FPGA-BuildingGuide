@@ -15,3 +15,6 @@
 **/work/_info
 /.DS_Store
 /Thumbs.db
+
+**/work_*/
+**/*.wlf

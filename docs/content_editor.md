@@ -1,17 +1,14 @@
 # 导视内容编辑器使用说明
 
-这个工具供工作人员填写导视内容，使用中文表单修改标题、楼层、房间、简介和活动。日常修改可通过表单完成，无需手工编辑 JSON、字模文件或 FPGA 代码。
+这个工具供工作人员填写导视内容，使用中文表单修改标题、楼层、房间、简介和活动。无需编辑 JSON、字模文件或 FPGA 代码，也无需安装 Python。
 
 ## 打开程序
 
-本提交包提供内容编辑器的 Python 源码。在 Windows 安装 Python 3.10 或更新版本（包含 tkinter），进入本包根目录后运行：
+双击 `release/content_editor/GuideContentEditor/GuideContentEditor.exe`。
 
-```powershell
-python -m pip install -r scripts/requirements_dynamic_text.txt
-python scripts/site_content_editor.py
-```
+请保留整个 `GuideContentEditor` 文件夹。旁边的 `_internal` 目录包含运行依赖，不能删掉或只把 EXE 单独拿走。程序可以离线使用；使用 Windows 自带的微软雅黑生成字模，不随工具分发 Windows 字体。
 
-程序载入 `config/runtime_site.json`，也可打开此前保存的草稿。字模默认使用 Windows 微软雅黑；字体文件不随包分发。需要生成便携 EXE 时，另外安装 PyInstaller 后运行 `python tools/build_content_editor.py`。
+程序优先载入同一工程的 `config/runtime_site.json`；单独分发便携文件夹时，使用包内样例。也可以用“打开”选择此前保存的草稿。每次开始工作前，先核对标题、楼层和图片配置是否属于当前展点。
 
 ## 日常操作
 

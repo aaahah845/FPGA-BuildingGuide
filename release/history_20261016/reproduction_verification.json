@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-17",
+  "source_files_byte_identical_to_readable_submission": 110,
+  "tf_card_files_identical": 77,
+  "published_bitstream_unchanged": true,
+  "cfg_reexport_byte_identical": true,
+  "cache_test": {
+    "pass": true,
+    "cases": 268,
+    "checks": 1618,
+    "simulator": "ModelSim-Altera 10.3c"
+  },
+  "clean_source_build": {
+    "pass": true,
+    "td_version": "6.2.168116",
+    "synthesis_run": "syn_1",
+    "physical_run": "phy_seed61",
+    "syn_seconds": 160.94,
+    "phy_seconds": 196.46,
+    "generated_bit_sha256": "88bfee6152b55b59e50a90576513eed969deca798b67cb713b7309e009a89734",
+    "same_sha256_as_board_tested_bit": false,
+    "identical_except_date_header": true,
+    "board_test_performed_for_this_rebuild": false
+  },
+  "test_scope": "Computer-side packaging/build/allocator checks. Board evidence is separately recorded."
+}
